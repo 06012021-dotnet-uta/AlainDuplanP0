@@ -14,7 +14,7 @@ namespace my_first_hello_world
 
             string myAge = Console.ReadLine();
 
-            Console.WriteLine("Your name is {0} and you are {1} old", myName, myAge);
+            Console.WriteLine("Your name is {0} and you are {1} years old", myName, myAge);
         }
     }
 }
