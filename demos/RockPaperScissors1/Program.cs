@@ -30,26 +30,37 @@ namespace RockPaperScissors1
 
                 //check if the user inputted a number that is out of bounds
                 if (playerChoiceInt > 3 || playerChoiceInt <1)
-                {
                     Console.WriteLine($"You inputted {playerChoiceInt}. That is not a valid choice.");
-                }
                 else if (!sucessfulConversion)
-                {
                     Console.WriteLine($"You inputted {playerChoice}. That is not a valid choice.");
-                }
 
-            } while (!sucessfulConversion && (playerChoiceInt < 1 || playerChoiceInt > 3));
+            } //  while(!sucessfulConversion || (playerChoiceInt < 1  && playerChoiceInt > 3))
+            while(!sucessfulConversion || !(playerChoiceInt > 0  && playerChoiceInt < 4));
+;
 
-            /*
-            if (sucessfulConversion == true)
-            {
+             if (sucessfulConversion == true)
                 Console.WriteLine($"the conversion returned {sucessfulConversion} and the player chose {playerChoiceInt}");
-            }
             else
-            {
                 Console.WriteLine($"the conversion returned {sucessfulConversion} and the player chose {playerChoiceInt}");
-            }
-            */
+            
+            // get a random number
+            Random rand = new Random();
+            // 1, 2, or 3
+            int computerChoice = rand.Next(1, 4);
+
+            //print the choices
+            Console.WriteLine($"The player's choice is {playerChoiceInt}");
+            Console.WriteLine($"The compututer's choice is {computerChoice}");
+
+            //check who won
+            if (playerChoiceInt == 1 && computerChoice == 2
+            || playerChoiceInt == 2 && computerChoice == 3
+            || playerChoiceInt == 3 && computerChoice == 1)
+                Console.WriteLine("Computer Wins");
+            else if (playerChoiceInt == computerChoice)
+                Console.WriteLine("Tie Game!!");
+            else
+                Console.WriteLine("Player Wins!");
         }
     }
 }
