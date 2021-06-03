@@ -2,104 +2,96 @@
 
 namespace RockPaperScissors1
 {
-    class Program
+    partial class Program
     {
         public enum RPSChoice{
             Rock, // equals 0
             Paper, // equals 1
             Scissors // equals 2
         }
-        static void Main(string[] args)
-    
+        static void Main(string[] args)    
         {
-            int playerWins = 0;
-            int compWins = 0;
+
+                     
             int ties = 0;
             string input = "x";
-            int totalPlayerWins = 0;
-            int totalCompWins = 0;
+            RpsGame game = new RpsGame();
+            PlayerDerivedClass player1 = new PlayerDerivedClass();
+            PlayerDerivedClass computer = new PlayerDerivedClass("Master", "Mind");
+            
 
-            Console.WriteLine("Welcome to Janken! \nWhat is your name?");
-            string playerName = Console.ReadLine();
+            Console.WriteLine(game.WelcomeMessage());
+            player1.Fname = Console.ReadLine();
+            Console.WriteLine("What is your last name?");
+            player1.Lname = Console.ReadLine();
+
+            Console.WriteLine($"Get ready for a heated battle {player1.getFullName()}!\n Press ENTER to continue.");
+           
 
             while(input == "x"){
-            Console.WriteLine("\nPlease make a choice.");
-
-            bool sucessfulConversion = false;
-            int playerChoiceInt;
-            do
-            {
-                Console.WriteLine("1. Rock \n2. Paper\n3. Scissors");
-                string playerChoice = Console.ReadLine();
-
-                //creat a int variable to catch converted choice
                 
-                sucessfulConversion = Int32.TryParse(playerChoice, out playerChoiceInt);
-
-                //check if the user inputted a number that is out of bounds
-                if (playerChoiceInt > 3 || playerChoiceInt <1)
-                    Console.WriteLine($"\n{playerName}, you inputted {playerChoiceInt}. That is not a valid choice.");
-                else if (!sucessfulConversion)
-                    Console.WriteLine($"\n{playerName}, you inputted {playerChoice}. That is not a valid choice.");
-
-            } //  while(!sucessfulConversion || (playerChoiceInt < 1  && playerChoiceInt > 3))
-            while(!sucessfulConversion || !(playerChoiceInt > 0  && playerChoiceInt < 4));
-;
-
-             if (sucessfulConversion == true)
-                Console.WriteLine($"\nthe conversion returned {sucessfulConversion} and {playerName} chose {playerChoiceInt}.");
-            else
-                Console.WriteLine($"\nthe conversion returned {sucessfulConversion} and {playerName} chose {playerChoiceInt}.");
-            
+                        
             // get a random number
+            player1.choice = game.playerChoice(Console.ReadLine(), player1.getFullName());
+
             Random rand = new Random();
             // 1, 2, or 3
-            int computerChoice = rand.Next(1, 4);
+            computer.choice = rand.Next(1, 4);
 
             //print the choices
-            Console.WriteLine($"\n{playerName}'s choice is {playerChoiceInt}.");
-            Console.WriteLine($"The compututer's choice is {computerChoice}.");
+            Console.WriteLine($"\n{player1.getFullName()}'s choice is {player1.choice}.");
+            Console.WriteLine($"The {computer.getFullName()}'s choice is {computer.choice}.");
 
             //check who won
-            if (playerChoiceInt == 1 && computerChoice == 2
-            || playerChoiceInt == 2 && computerChoice == 3
-            || playerChoiceInt == 3 && computerChoice == 1){
-                Console.WriteLine("\nComputer wins the match.");
-                compWins++;
-            }
-            else if (playerChoiceInt == computerChoice){
-                Console.WriteLine("\nTie.");
+            PlayerDerivedClass winner = game.matchWinner(player1, computer);
+
+            if(winner == player1)
+                player1.wins = player1.wins + 1;
+            else if(winner == computer)
+                computer.wins = computer.wins + 1;
+            else
                 ties++;
+            
+            //match set
+            PlayerDerivedClass gameWinner = game.gameWinner(player1, computer, ties);
+
+            if(gameWinner == player1){
+                input = Console.ReadLine();
+                ties = 0;
             }
-            else{
-                Console.WriteLine($"\n{playerName} wins the match.");
-                playerWins++;
+            else if(gameWinner == computer){
+                input = Console.ReadLine();
+                ties = 0;
             }
-            if(playerWins < 2 && compWins < 2){
-                Console.WriteLine($"{playerName} won {playerWins} times and Computer won {compWins} times with {ties} ties.");
-                Console.WriteLine("No winner yet, starting new match!");
+            else
                 continue;
-            }
-            if(playerWins == 2){
-                totalPlayerWins++;
-                Console.WriteLine($"{playerName} won {playerWins} times and Computer won {compWins} times with {ties} ties.");
-                Console.WriteLine($"{playerName} wins!\n{playerName} has {totalPlayerWins} wins under his belt with {totalCompWins} losses.  \nPress X to start a new game or something else to quit.");
-                input = Console.ReadLine();
-                playerWins = 0;
-                compWins = 0;
-                ties = 0;
+
+
+            // if(player1.wins < 2 && computer.wins < 2){
+            //     Console.WriteLine($"{player1.getFullName()} won {player1.getFullName()} times and {computer.getFullName()} won {computer.wins} times with {ties} ties.");
+            //     Console.WriteLine("No winner yet, starting new match!");
+            //     continue;
+            // }
+            // if(player1.wins == 2){
+            //     totalPlayerWins++;
+            //     Console.WriteLine($"{player1.getFullName()} won {player1.getFullName()} times and {computer.getFullName()}d won {computer.wins} times with {ties} ties.");
+            //     Console.WriteLine($"{player1.getFullName()} wins!\n{player1.getFullName()} has {totalPlayerWins} wins under his belt with {totalCompWins} losses.  \nPress X to start a new game or something else to quit.");
+            //     input = Console.ReadLine();
+            //     player1.wins = 0;
+            //     computer.wins = 0;
+            //     ties = 0;
                 
-            }
-            if(compWins == 2){
-                totalCompWins++;
-                Console.WriteLine($"{playerName} won {playerWins} times and Computer won {compWins} times with {ties} ties.");
-                Console.WriteLine($"Computer wins! \n{playerName} has {totalPlayerWins} wins under his belt with {totalCompWins} losses.  \nxPress X to start a new game or something else to quit..");
-                input = Console.ReadLine();
-                playerWins = 0;
-                compWins = 0;
-                ties = 0;
+            // }
+            // if(computer.wins == 2){
+            //     totalCompWins++;
+            //     Console.WriteLine($"{player1.getFullName()} won {player1.getFullName()} times and Computer won {computer.wins} times with {ties} ties.");
+            //     Console.WriteLine($"Computer wins! \n{player1.getFullName()} has {player1.getFullName()} wins under his belt with {totalCompWins} losses.  \nxPress X to start a new game or something else to quit..");
+            //     input = Console.ReadLine();
+            //     player1.wins = 0;
+            //     computer.wins = 0;
+            //     ties = 0;
                    
-            }
+            // }
         }
     }
 }
