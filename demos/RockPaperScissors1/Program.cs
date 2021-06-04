@@ -25,14 +25,14 @@ namespace RockPaperScissors1
             Console.WriteLine("What is your last name?");
             player1.Lname = Console.ReadLine();
 
-            Console.WriteLine($"Get ready for a heated battle {player1.getFullName()}!\n Press ENTER to continue.");
+            Console.WriteLine($"Get ready for a heated battle {player1.getFullName()}!");
            
 
             while(input == "x"){
                 
                         
             // get a random number
-            player1.choice = game.playerChoice(Console.ReadLine(), player1.getFullName());
+            player1.choice = game.playerChoice(player1.getFullName());
 
             Random rand = new Random();
             // 1, 2, or 3
@@ -67,31 +67,7 @@ namespace RockPaperScissors1
                 continue;
 
 
-            // if(player1.wins < 2 && computer.wins < 2){
-            //     Console.WriteLine($"{player1.getFullName()} won {player1.getFullName()} times and {computer.getFullName()} won {computer.wins} times with {ties} ties.");
-            //     Console.WriteLine("No winner yet, starting new match!");
-            //     continue;
-            // }
-            // if(player1.wins == 2){
-            //     totalPlayerWins++;
-            //     Console.WriteLine($"{player1.getFullName()} won {player1.getFullName()} times and {computer.getFullName()}d won {computer.wins} times with {ties} ties.");
-            //     Console.WriteLine($"{player1.getFullName()} wins!\n{player1.getFullName()} has {totalPlayerWins} wins under his belt with {totalCompWins} losses.  \nPress X to start a new game or something else to quit.");
-            //     input = Console.ReadLine();
-            //     player1.wins = 0;
-            //     computer.wins = 0;
-            //     ties = 0;
-                
-            // }
-            // if(computer.wins == 2){
-            //     totalCompWins++;
-            //     Console.WriteLine($"{player1.getFullName()} won {player1.getFullName()} times and Computer won {computer.wins} times with {ties} ties.");
-            //     Console.WriteLine($"Computer wins! \n{player1.getFullName()} has {player1.getFullName()} wins under his belt with {totalCompWins} losses.  \nxPress X to start a new game or something else to quit..");
-            //     input = Console.ReadLine();
-            //     player1.wins = 0;
-            //     computer.wins = 0;
-            //     ties = 0;
-                   
-            // }
+    
         }
     }
 }

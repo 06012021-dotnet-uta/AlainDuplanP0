@@ -3,11 +3,20 @@ namespace RockPaperScissors1
 {
     public class RpsGame
     {
-            
+         /// <summary>
+         /// Returns string containing the welcome message.
+         /// </summary>
+         /// <returns>Welcome message</returns>   
         public string WelcomeMessage(){
             string welcome = "Welcome to Janken! \nWhat is your name?";
             return welcome;
         }
+        /// <summary>
+        /// Takes a string input and returns a string if parameters are met, otherwise will return null.
+        /// Input cannot be empty nor greater than twenty characters.
+        /// </summary>
+        /// <param name="playerInput">name that is inputted by the player</param>
+        /// <returns>Trimmed string if valid, else will return null</returns>
         public string getPlayerName(string playerInput){
             playerInput = playerInput.Trim();
             if (playerInput.Length > 20 || playerInput.Length < 1)
@@ -16,7 +25,14 @@ namespace RockPaperScissors1
             }
             return playerInput;
         }
-        public int playerChoice(string input, string name){
+        /// <summary>
+        /// Takes player name as an input and returns player choice if valid.
+        /// Displays prompts for player to input a choice.
+        /// If choice is invalid, prompt will continue to appear until valid prompt is entered
+        /// </summary>
+        /// <param name="name">Name of the Player</param>
+        /// <returns>Player choice in the form as a int</returns>
+        public int playerChoice(string name){
             bool sucessfulConversion = false;
             int playerChoiceInt;
             string playerName = name;
@@ -83,7 +99,7 @@ namespace RockPaperScissors1
             else if(computer.wins == 2){
                 computer.gameWins++;
                 Console.WriteLine($"{player.getFullName()} won {player.wins} times and Computer won {computer.wins} times with {ties} ties.");
-                Console.WriteLine($"Computer wins! \n{player.getFullName()} has {player.gameWins} wins under his belt with {computer.gameWins} losses.  \nxPress X then enter to start a new game or something else to quit..");
+                Console.WriteLine($"Computer wins! \n{player.getFullName()} has {player.gameWins} wins under his belt with {computer.gameWins} losses.  \nPress X then enter to start a new game or something else to quit..");
                 player.wins = 0;
                 computer.wins = 0;
                 return computer;
