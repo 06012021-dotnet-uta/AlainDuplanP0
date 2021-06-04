@@ -54,7 +54,7 @@ namespace RockPaperScissors1
 
             } //  while(!sucessfulConversion || (playerChoiceInt < 1  && playerChoiceInt > 3))
             while(!sucessfulConversion || !(playerChoiceInt > 0  && playerChoiceInt < 4));
-;
+
 
              if (sucessfulConversion == true)
                 Console.WriteLine($"\nthe conversion returned {sucessfulConversion} and {playerName} chose {playerChoiceInt}.");
