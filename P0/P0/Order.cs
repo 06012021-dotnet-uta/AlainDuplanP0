@@ -8,7 +8,7 @@ namespace P0{
     public User customer{get;}
     public DateTime time{get;}
     public double total{get;}
-    private List<Inventory> products {get;}
+    //private List<Inventory> products {get;}
    
     public Order(User customer, Store store, string time = ""){
         this.store = store;
@@ -25,7 +25,7 @@ namespace P0{
         }
     }
     
-    public void addProducts(Item item, int quantity = 1){
+    /*public void addProducts(Item item, int quantity = 1){
         if(item.exists){
             if(products.contains(item)){
                 products[item] += quantity;
@@ -37,6 +37,6 @@ namespace P0{
             }
         }
 
-   }
+   }*/
 }
 }

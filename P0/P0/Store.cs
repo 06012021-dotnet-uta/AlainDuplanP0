@@ -7,9 +7,9 @@ namespace P0{
         public string name {get; set;}
         public string location{get; set;}
 
-        private List<Order> orders = new List<Order>();
+        //private List<Order> orders = new List<Order>();
 
-        private Dictionary<string, Inventory> inventory = new Dictionary<string, Inventory>();
+        //private Dictionary<string, Inventory> inventory = new Dictionary<string, Inventory>();
 
          public Store(){
              name = "Unnamed store, you should name it";
@@ -26,9 +26,9 @@ namespace P0{
              this.location = location;
          }
 
-         public Dictionary<string, Inventory> getInventory(){
+         /*public Dictionary<string, Inventory> getInventory(){
              return inventory;
-         }
+         }*/
 
         //  public void addItem(Item item, int quantity = 1){
         //      if(item.exists()){
@@ -40,14 +40,14 @@ namespace P0{
         //      }
         //  }
 
-        public Item getItem(string name){
+        /*public Item getItem(string name){
             if(inventory.containsKey(name))
                 return inventory[name];
             else
                 return null;
-        }
+        } */
          
-         public bool checkout(Inventory item){
+         /*public bool checkout(Inventory item){
             if(!inventory.containsKey(item.name))
                 return false;
             Inventory curr = inventory[item.name];
@@ -60,15 +60,15 @@ namespace P0{
             curr.quantity -= item.quantity;
             return true;
            
-         }
+         }*/
 
         
-        public List<Order> getOrder(){
+       /* public List<Order> getOrder(){
             return orders;
         }
         public List<Order> addOrder(Order order){
             orders.add(order);
-        }
+        }*/
     }
 
 }

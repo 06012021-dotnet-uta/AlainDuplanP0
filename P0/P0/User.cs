@@ -7,8 +7,8 @@ namespace P0{
         public string lname {get; set;}
 
         private int id;
-        private List<Order> orders = new List<Order>();
-        private List<Inventory> history = new List<Inventory>();
+        //private List<Order> orders = new List<Order>();
+        //private List<Inventory> history = new List<Inventory>();
         private Item top;
 
         public Store store{get; set;}
@@ -28,7 +28,7 @@ namespace P0{
             return id;
         }
 
-        public List<Order> getOrder(){
+        /*public List<Order> getOrder(){
             return orders;
         }
         public List<Order> addOrder(Order order){
@@ -47,7 +47,7 @@ namespace P0{
                  history.add(new Inventory(item, quantity));
              }
              top = history.values.getMax;
-         }
+         } */
 
         
     }
