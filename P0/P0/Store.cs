@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using P0Context;
+using System.Linq;
 
 namespace P0{
     public class Store{
@@ -7,16 +9,24 @@ namespace P0{
         public string name {get; set;}
         public string location{get; set;}
 
+        private readonly ShopperContext _context;
+        public  Store() { }
+        public  Store(ShopperContext context)
+        {
+            this._context = context;
+        }
+        //var stores = _context.Stores.ToList();
+
         //private List<Order> orders = new List<Order>();
 
         //private Dictionary<string, Inventory> inventory = new Dictionary<string, Inventory>();
 
-         public Store(){
+        /*public Store(){
              name = "Unnamed store, you should name it";
              location = "no location data given";
-         }
+         } */
 
-         public Store(string name){
+        public Store(string name){
              this.name = name;
              location = "no location data given";
          }
