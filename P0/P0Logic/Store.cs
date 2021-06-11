@@ -3,7 +3,7 @@ using System.Collections;
 using P0Context;
 using System.Linq;
 
-namespace P0{
+namespace Model{
     public class Store{
 
         public string name {get; set;}

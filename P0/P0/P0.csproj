@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -19,8 +19,10 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\P0Context\P0Context.csproj" />
+		<ProjectReference Include="..\Businesss\Businesss.csproj" />
+		<ProjectReference Include="..\P0Logic\Model.csproj" />
 	</ItemGroup>
+	
 	<PropertyGroup>
 		<GenerateProgramFile>false</GenerateProgramFile>
 	</PropertyGroup>

@@ -2,18 +2,15 @@ using System;
 using System.Collections;
 using P0Context;
 using System.Linq;
-namespace P0{
+namespace Model{
     public class User {
 
         public string fname { get; set; }
         public string lname { get; set; }
-
         public int id { get; set; }
-       
         private Item top;
         public int storeId {get; set;}
 
-        
         public User(string fname, string lname){
             if(fname == ""){
                 this.fname = "defaultFName";
@@ -35,11 +32,7 @@ namespace P0{
                 storeId = (int)top;
             this.id = CId;
         }
-        
-
-      
-
-        
+                
     }
 
 }

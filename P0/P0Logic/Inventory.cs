@@ -1,5 +1,5 @@
 using System;
-namespace P0
+namespace Model
 {
     public class Inventory
     {

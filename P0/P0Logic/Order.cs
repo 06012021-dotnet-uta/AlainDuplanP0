@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
 
-namespace P0{
+
+namespace Model { 
     public class Order{
         
     public Store store {get;}
