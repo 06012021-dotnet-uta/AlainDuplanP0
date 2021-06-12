@@ -20,7 +20,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Businesss\Businesss.csproj" />
-		<ProjectReference Include="..\P0Logic\Model.csproj" />
+		<ProjectReference Include="..\Model\Model.csproj" />
 	</ItemGroup>
 	
 	<PropertyGroup>

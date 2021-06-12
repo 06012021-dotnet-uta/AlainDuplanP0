@@ -3,6 +3,7 @@ using P0Context;
 using System.Linq;
 using P0Logic;
 using Model;
+using Businesss;
 
 namespace P0
 {
@@ -10,68 +11,67 @@ namespace P0
     {
         static void Main(string[] args)
         {
-            ShopperContext context = new ShopperContext();
             
-               
             User cust = null; // customer user to be used 
             int CId; // customer id
 
-            #region Prompts for creating a new customer and logging in
-            Login x = new Login();
+            
+            LoginContext loginContext = new LoginContext(); // only calls context methods
 
-            Login login = new Login();
+            LoginHelper login = new LoginHelper(); // helps login context
+            #region Prompts for creating a new customer and logging in
             string input = login.welcomePrompt();
             if (input.ToLower() == "yes")
             {
-                string[] nameArr = login.nameInput();
-                cust = new User(nameArr[0], nameArr[1]);
-                Customer custEnt = new Customer();
-                custEnt.CustomerFname = nameArr[0]; custEnt.CustomerLname = nameArr[1];
-                context.Customers.Add(custEnt);
-                context.SaveChanges();
-                int CustID = context.Customers.OrderByDescending(x => x.CustomerId).Select(x => x.CustomerId).FirstOrDefault();
-                cust.id = CustID;
-                Console.WriteLine($"Your Customer Id is {CustID} and your name is {cust.fname} {cust.lname}");
+                cust = loginContext.inputYes(login.nameInput());
             }//end if
             while (cust == null){
                 bool check = false;
                 while (!check){
-                    string[] nameArr = login.nameInput();
-                    var choices = context.Customers.Where(x => x.CustomerFname.Contains(nameArr[0]) && x.CustomerLname.Contains(nameArr[1])).ToList();
-                    if (!choices.Any()){
-                        Console.WriteLine("No customer found. Try again");
-                        check = false;
-                    }//end if
-                    foreach (var c in choices){
-                        Console.WriteLine($"Customer found: {c.CustomerFname} {c.CustomerLname}, ID: {c.CustomerId}");
-                        check = true;
-                    }//end foreach
+                    check = loginContext.checkInput(login.nameInput());
                 }//end inner whileloop
                 CId = login.checkId();
-                var temp = context.Customers.Where(x => x.CustomerId == CId);
-
-                if (!temp.Any())
-                    Console.WriteLine("Customer ID was not found");
-                else{
-                    cust = new User(context, CId);
-                    Console.WriteLine($"Your Customer Id is {cust.id} and your name is {cust.fname} {cust.lname}. Welcome!");
-                }//end else
+                cust = loginContext.checkId(CId);
             }//end outer whilelooop
             #endregion
 
-            int next = login.whatNext();// activates next prompt
-            if(next == 1) // check user history
+            bool nextCheck = false;
+            while (!nextCheck)
             {
+                int next = login.whatNext();// activates next prompt
+                if (next == 1) // check user history
+                {
+                    UserInfo userInfo = new UserInfo();
+                    int uNext = userInfo.whatNext();
+                    if (uNext == 1) // check user orders
+                    {
+                        Console.WriteLine(userInfo.displayInfo(cust));
+                        Console.WriteLine("\nReturning you to the main Screen now.");
 
-            }
-            if(next == 2) //check store history
-            {
+                    }
+                    if (uNext == 2) //check order history
+                    {
+                        Console.WriteLine(userInfo.getOrderHistory(cust));
+                    }
+                    if (uNext == 3) // exit
+                    {
+                        nextCheck = false;
+                    }
 
-            }
-            if(next == 3) // make a new order
-            {
+                }
+                if (next == 2) //check store history
+                {
 
-            }
+                }
+                if (next == 3) // make a new order
+                {
+
+                }
+                if (next == 4) // exit
+                {
+                    nextCheck = true;
+                }
+            }//nextCheck
 
         }//main
     }//class

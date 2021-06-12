@@ -5,8 +5,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Model\Model.csproj" />
 		<ProjectReference Include="..\P0Context\P0Context.csproj" />
-		<ProjectReference Include="..\P0Logic\Model.csproj" />
 	</ItemGroup>
 	
 </Project>

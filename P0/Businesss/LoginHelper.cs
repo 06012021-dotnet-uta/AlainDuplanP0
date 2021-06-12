@@ -8,7 +8,7 @@ using Model;
 
 namespace P0Logic
 {
-    public class Login
+    public class LoginHelper
     {
         public string welcomePrompt(){   Console.WriteLine("Welcome, are you a new customer? Type yes or no.");
             string input = Console.ReadLine();
@@ -46,9 +46,10 @@ namespace P0Logic
             Console.WriteLine("Enter 1: Check User Order History");
             Console.WriteLine("Enter 2: Check Store Order History");
             Console.WriteLine("Enter 3: Make a new Order");
+            Console.WriteLine("Enter 4: Exit");
             string input = Console.ReadLine();
             int output = isThisAnInt(input);
-            if(output > 3 || output < 1){
+            if(output > 4 || output < 1){
                 Console.WriteLine("Input was not an option");
                 output = whatNext();
             }
@@ -63,6 +64,7 @@ namespace P0Logic
                 Console.WriteLine("Enter 1: Check User Order History");
                 Console.WriteLine("Enter 2: Check Store Order History");
                 Console.WriteLine("Enter 3: Make a new Order");
+                Console.WriteLine("Enter 4: Exit");
                 input = Console.ReadLine();
                 sucessfulConversion = Int32.TryParse(input, out output);
             }
