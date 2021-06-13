@@ -1,15 +1,19 @@
 using System;
 using System.Collections;
+using Microsoft.Extensions.DependencyInjection;
 
 
 namespace Model { 
     public class Order{
         
-    public Store store {get;}
-    public User customer{get;}
+    public Store store { get; set; }
+    public User customer{ get; set; }
     public DateTime time{get;}
-    public double total{get;}
-    //private List<Inventory> products {get;}
+    
+    public int id { get; set; }
+    public double total{ get; set; }
+    private ArrayList products = new ArrayList();
+       
    
     public Order(User customer, Store store, string time = ""){
         this.store = store;
@@ -26,18 +30,22 @@ namespace Model {
         }
     }
     
-    /*public void addProducts(Item item, int quantity = 1){
-        if(item.exists){
-            if(products.contains(item)){
-                products[item] += quantity;
-                total += (item.price * quantity);
-            }
-            else{
-                products.add(new Inventory(item, quantity));
-                total += (item.price * quantity);
-            }
+    public Order()
+        {
+            store = null;
+            customer = null;
+            total = 0;
+            time = DateTime.Now;
+
         }
 
-   }*/
+    public void addItem(Item item)
+        {
+            products.Add(item);
+        }
+    public ArrayList getOrder()
+        {
+            return products;
+        }
 }
 }

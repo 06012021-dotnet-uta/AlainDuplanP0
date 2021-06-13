@@ -64,6 +64,7 @@ namespace P0
                 if (next == 2) //check store history
                 {
                     StoreInfo storeInfo = new StoreInfo();
+                    Console.WriteLine("We will just assume your an admin");
                     Model.Store store = storeInfo.storeSelect();
                     int sNext = storeInfo.whatNext();
 
@@ -86,9 +87,42 @@ namespace P0
                 }
                 if (next == 3) // make a new order/past
                 {
+                    OrderInfo orderInfo = new OrderInfo();
+                    Model.Order order = new Model.Order();
+                    StoreInfo storeInfo = new StoreInfo();
+                    
+                    order.customer = cust;
+                    
+
+                    int oNext = orderInfo.whatNext();
+                    if (oNext == 1)//check past order
+                    {
+                        Console.WriteLine(orderInfo.getOrderHistory(order));
+                        Console.WriteLine();
+                        order.id = orderInfo.storeSelect().id;
+                        
+                        Console.WriteLine(orderInfo.getInventory(order));
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+                    }
+                    if (oNext == 2)//make new order
+                    {
+                        order.store = storeInfo.storeSelect();
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+
+                    }
+                    if (oNext == 3) // exit
+                    {
+                        nextCheck = false;
+                    }
 
                 }
-                if (next == 4) // exit
+                if(next == 4) // add stuff
+                {
+                    Console.WriteLine("Sorry but I didnt get a chance to imnplement this yet.");
+                    Console.WriteLine("\nReturning you to the main Screen now.\n");
+
+                }
+                if (next == 5) // exit
                 {
                     nextCheck = true;
                 }

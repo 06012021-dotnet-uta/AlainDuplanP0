@@ -13,22 +13,18 @@ namespace Businesss
         ShopperContext context = new ShopperContext();
         public Model.Store storeSelect()
         {
-            Model.Store storeM;
-            Console.WriteLine("We will just assume your an admin");
+            Model.Store storeM = new Model.Store();
+            
             int SId = checkId();
-            P0Context.Store storeC = context.Stores.Where(x => x.StoreId == SId).FirstOrDefault();
+            P0Context.Store storeC= context.Stores.Where(x => x.StoreId == SId).FirstOrDefault();
             if(storeC == null)
             {
                 Console.WriteLine("That ID was invalid, lets try this again :)");
                 storeM = storeSelect();
             }
-            try
+            if(storeC != null)
             {
                 storeM = new Model.Store(storeC.StoreName, storeC.StoreLocation, storeC.StoreId);
-            }
-            catch (System.NullReferenceException)
-            {
-                storeM = storeSelect();
             }
             Console.WriteLine(displayInfo(storeM));
             return storeM;
@@ -138,5 +134,6 @@ namespace Businesss
             }
             return ouput;
         }
+        
     }
 }

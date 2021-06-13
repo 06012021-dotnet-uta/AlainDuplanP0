@@ -36,7 +36,13 @@ namespace P0Logic
             string Fname = Console.ReadLine().Trim();
             Console.WriteLine("Enter your last name");
             string Lname = Console.ReadLine().Trim();
-            string[] arr = {Fname, Lname};
+            string[] arr = { Fname, Lname };
+            if (Fname.Length > 30 || Lname.Length > 30)
+            {
+                Console.WriteLine("\nExcuse me but your name is a bit too long, try again.");
+                arr = nameInput();
+
+            }
             return arr;
         }
 
@@ -45,11 +51,12 @@ namespace P0Logic
             Console.WriteLine("What would you want to do next?");
             Console.WriteLine("Enter 1: Check User");
             Console.WriteLine("Enter 2: Check Store");
-            Console.WriteLine("Enter 3: Chek Order");
-            Console.WriteLine("Enter 4: Exit");
+            Console.WriteLine("Enter 3: Check Order");
+            Console.WriteLine("Enter 4: Add Data");
+            Console.WriteLine("Enter 5: Exit");
             string input = Console.ReadLine();
             int output = isThisAnInt(input);
-            if(output > 4 || output < 1){
+            if(output > 5 || output < 1){
                 Console.WriteLine("Input was not an option");
                 output = whatNext();
             }
@@ -63,8 +70,9 @@ namespace P0Logic
                 Console.WriteLine("input is in the incorrect format, enter a new one");
                 Console.WriteLine("Enter 1: Check User");
                 Console.WriteLine("Enter 2: Check Store");
-                Console.WriteLine("Enter 3: Chek Order");
-                Console.WriteLine("Enter 4: Exit");
+                Console.WriteLine("Enter 3: Check Order");
+                Console.WriteLine("Enter 4: Add Data");
+                Console.WriteLine("Enter 5: Exit");
                 input = Console.ReadLine();
                 sucessfulConversion = Int32.TryParse(input, out output);
             }
