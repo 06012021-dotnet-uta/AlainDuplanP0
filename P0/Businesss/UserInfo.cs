@@ -28,7 +28,7 @@ namespace Businesss
             return output;
         }
 
-        public int isThisAnInt(string input)
+        private int isThisAnInt(string input)
         {
             int output;
             bool sucessfulConversion = Int32.TryParse(input, out output);

@@ -46,12 +46,14 @@ namespace P0
                     if (uNext == 1) // check user orders
                     {
                         Console.WriteLine(userInfo.displayInfo(cust));
-                        Console.WriteLine("\nReturning you to the main Screen now.");
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
 
                     }
                     if (uNext == 2) //check order history
                     {
                         Console.WriteLine(userInfo.getOrderHistory(cust));
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+
                     }
                     if (uNext == 3) // exit
                     {
@@ -61,9 +63,28 @@ namespace P0
                 }
                 if (next == 2) //check store history
                 {
+                    StoreInfo storeInfo = new StoreInfo();
+                    Model.Store store = storeInfo.storeSelect();
+                    int sNext = storeInfo.whatNext();
+
+                    if(sNext == 1)//check inventory
+                    {
+                        Console.WriteLine(storeInfo.getInventory(store));
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+                    }
+                    if (sNext == 2)//check past orders
+                    {
+                        Console.WriteLine(storeInfo.getOrderHistory(store));
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+
+                    }
+                    if (sNext == 3) // exit
+                    {
+                        nextCheck = false;
+                    }
 
                 }
-                if (next == 3) // make a new order
+                if (next == 3) // make a new order/past
                 {
 
                 }

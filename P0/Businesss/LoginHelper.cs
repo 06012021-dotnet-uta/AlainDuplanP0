@@ -43,9 +43,9 @@ namespace P0Logic
         public int whatNext()
         {
             Console.WriteLine("What would you want to do next?");
-            Console.WriteLine("Enter 1: Check User Order History");
-            Console.WriteLine("Enter 2: Check Store Order History");
-            Console.WriteLine("Enter 3: Make a new Order");
+            Console.WriteLine("Enter 1: Check User");
+            Console.WriteLine("Enter 2: Check Store");
+            Console.WriteLine("Enter 3: Chek Order");
             Console.WriteLine("Enter 4: Exit");
             string input = Console.ReadLine();
             int output = isThisAnInt(input);
@@ -56,14 +56,14 @@ namespace P0Logic
             return output;
         }
 
-        public int isThisAnInt(string input){
+        private int isThisAnInt(string input){
             int output;
             bool sucessfulConversion = Int32.TryParse(input, out output);
             while (!sucessfulConversion){
                 Console.WriteLine("input is in the incorrect format, enter a new one");
-                Console.WriteLine("Enter 1: Check User Order History");
-                Console.WriteLine("Enter 2: Check Store Order History");
-                Console.WriteLine("Enter 3: Make a new Order");
+                Console.WriteLine("Enter 1: Check User");
+                Console.WriteLine("Enter 2: Check Store");
+                Console.WriteLine("Enter 3: Chek Order");
                 Console.WriteLine("Enter 4: Exit");
                 input = Console.ReadLine();
                 sucessfulConversion = Int32.TryParse(input, out output);
