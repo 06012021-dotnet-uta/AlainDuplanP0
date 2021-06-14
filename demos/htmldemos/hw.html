@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="HTML5_1Color_Black.png" style="height: 100px;" alt="HTML5">
+    <h1>About</h1>
+    <p>Some text about the website</p>
+    <h2>Our Locations</h2>
+    <ul>
+        <li>USA</li>
+        <ul>
+            <li><a href="newyork.com">New York</a></li>
+            <li><a href="columbus.com">Columbus</a></li>
+            <li><a href="Austin.com">Austin</a></li>
+            <li><a href="philly.com">Philly</a></li>
+        </ul>
+        <li>World</li>
+        <ul>
+            <li><a href="Ottawa.com">Ottawa</a></li>
+            <li><a href="sydney.com">Sydney</a></li>
+        </ul>
+    </ul>
+    <h2>Upcoming Classes</h2>
+    <table style="border: 1px solid black;">
+        <thead >
+            <tr style="border: 1px solid black;">
+                <td style="border: 1px solid black; text-align: center;"><strong>Location</strong></td>
+                <td style="border: 1px solid black; text-align: center;"><strong>Topic</strong></td>
+            </tr>
+        </thead>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black;">New York</td>
+            <td style="border: 1px solid black;">Javascript & jQuery</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;">San Fransisco</td>
+            <td style="border: 1px solid black;">HTML & CSS</td>
+        </tr>
+    </table>
+    <h2>Sign Up</h2>
+    <form method="POST">
+        <label for="name" >Name:</label>
+        <input type = "text" id="name"><br>
+        <label for="email" >Email:</label>
+        <input type="email" name="email" id="email"><br>
+        <label for="location" >Location:</label>
+        <select name="location" id ="Location">
+            <option value="San Fransisco" selected>New York</option>
+            <option value="New York">New York</option>
+        </select>
+        
+        <fieldset><legend>Gender:</legend>
+        <label for="male" >Male</label>
+        <input type="radio" name="male">
+        <label for="female" >Female</label>
+        <input type="radio" name="female"><br>
+        </fieldset>
+        <label for="about">Experience:</label><br>
+        <textarea  id="about"></textarea><br>
+        <input type="submit">
+    </form>
+    <span>
+        <a href="twitter.com">Twitter</a> | 
+        <a href="facebook.com">Facebook</a> |
+        <a href="Flickr.com">Flickr</a>
+    </span>
+</body>
+</html>
