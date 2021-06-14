@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Model { 
     public class Order{
         
-    public Store store { get; set; }
+    public int store { get; set; }
     public User customer{ get; set; }
     public DateTime time{get;}
     
@@ -15,7 +15,7 @@ namespace Model {
     private ArrayList products = new ArrayList();
        
    
-    public Order(User customer, Store store, string time = ""){
+    public Order(User customer, int store, string time = ""){
         this.store = store;
         this.customer = customer;
         total = 0;
@@ -32,7 +32,7 @@ namespace Model {
     
     public Order()
         {
-            store = null;
+            store = 0;
             customer = null;
             total = 0;
             time = DateTime.Now;

@@ -106,8 +106,18 @@ namespace P0
                     }
                     if (oNext == 2)//make new order
                     {
-                        order.store = storeInfo.storeSelect();
-                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+                        NewOrder newOrder = new NewOrder();
+                        order.store = newOrder.storeSelect().id;
+                        //Console.WriteLine("\nReturning you to the main Screen now.\n");
+                        bool getCheck = newOrder.takeItem(order);
+                        if (getCheck)
+                        {
+                            Console.WriteLine("\nReturning you to the main Screen now.\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nWe have to start you over.\nReturning you to the main Screen now.\n");
+                        }
 
                     }
                     if (oNext == 3) // exit
