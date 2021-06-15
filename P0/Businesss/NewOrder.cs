@@ -8,9 +8,16 @@ using Model;
 
 namespace Businesss
 {
-    public class NewOrder
+    /// <summary>
+    /// Used to make new orders
+    /// </summary>
+    public class NewOrder : NOHelpers
     {
         ShopperContext context = new ShopperContext();
+        /// <summary>
+        /// make an order based on user input
+        /// </summary>
+        /// <returns>order object</returns>
         public Model.Order storeSelect()
         {
             Model.Order orderM = new Model.Order();
@@ -32,7 +39,11 @@ namespace Businesss
 
             return orderM;
         }
-        private int checkId()
+        /// <summary>
+        /// Asks user for an ID to search for store
+        /// </summary>
+        /// <returns>A valid ID</returns>
+        public int checkId()
         {
             
             string input = Console.ReadLine();
@@ -46,7 +57,11 @@ namespace Businesss
             }
             return CId;
         }
-
+        /// <summary>
+        /// Allows you to search for an object in a store
+        /// </summary>
+        /// <param name="order">order object to work with</param>
+        /// <returns>Whether or not the store has item</returns>
         public bool takeItem(Model.Order order)
         {
             Console.WriteLine("Enter an item to search");
@@ -75,7 +90,11 @@ namespace Businesss
             }
             return true;
         }
-
+        /// <summary>
+        /// Adds items to order based on a search, adds multiple checks to ensure user isnt making an mistake
+        /// </summary>
+        /// <param name="order">order object to work on</param>
+        /// <returns>Modified order with new item</returns>
         public Model.Order getItem(Model.Order order)
         {
             Console.WriteLine("Enter the item ID you want to buy");
@@ -101,7 +120,11 @@ namespace Businesss
             }
             
         }
-
+        /// <summary>
+        /// Check to make sure quantity inputted is possible to withdraw
+        /// </summary>
+        /// <param name="item">inventory item</param>
+        /// <returns>a valid input</returns>
         private int checkQuantity(P0Context.StoreInventory item)
         {
             int input = checkNum();
@@ -134,6 +157,11 @@ namespace Businesss
             }
             return CId;
         }
+        /// <summary>
+        /// Finalize the order by updating the database
+        /// </summary>
+        /// <param name="order">order to be works on</param>
+        /// <returns>Order id of the order</returns>
         public int finalized(Model.Order order)
         {
             P0Context.Order newOrder = new P0Context.Order();

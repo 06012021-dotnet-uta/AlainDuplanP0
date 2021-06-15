@@ -4,6 +4,9 @@ using P0Context;
 using System.Linq;
 
 namespace Model{
+    /// <summary>
+    /// Holds information about the store selected
+    /// </summary>
     public class Store{
 
         public string name {get; set;}
@@ -11,25 +14,10 @@ namespace Model{
 
         public int id {get; set; }
 
-        private readonly ShopperContext _context;
-        public  Store() { }
-        public  Store(ShopperContext context)
-        {
-            this._context = context;
-        }
        
-
-        public Store(string name){
-             this.name = name;
-             location = "no location data given";
-             id = 0;
-        }
-
-         public Store(string name, string location){
-             this.name = name;
-             this.location = location;
-             id = 0;
-         }
+        public  Store() { }
+       
+       
 
         public Store(string name, string location, int id)
         {
@@ -37,7 +25,12 @@ namespace Model{
             this.location = location;
             this.id = id;
         }
-
+        public Store(string name, string location)
+        {
+            this.name = name;
+            this.location = location;
+            this.id = 0;
+        }
 
     }
 

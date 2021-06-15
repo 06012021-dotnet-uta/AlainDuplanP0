@@ -8,10 +8,17 @@ using P0Context;
 
 namespace Businesss
 {
-    public class OrderInfo
+    /// <summary>
+    /// Used to check order info
+    /// </summary>
+    public class OrderInfo : GHelpers, OHelpers
     {
 
         ShopperContext context = new ShopperContext();
+        /// <summary>
+        /// Displays menu and waits for a valid user input
+        /// </summary>
+        /// <returns>Valid input</returns>
         public int whatNext()
         {
             Console.WriteLine("What would you want to do next?");
@@ -27,7 +34,12 @@ namespace Businesss
             }
             return output;
         }
-        private int isThisAnInt(string input)
+        /// <summary>
+        /// Checks if input was an int and loops until valid input is given
+        /// </summary>
+        /// <param name="input">Input string from ReadLine</param>
+        /// <returns>An int input</returns>
+        public int isThisAnInt(string input)
         {
             int output;
             bool sucessfulConversion = Int32.TryParse(input, out output);
@@ -42,6 +54,11 @@ namespace Businesss
             }
             return output;
         }
+        /// <summary>
+        /// Gets Order history of a specific customer
+        /// </summary>
+        /// <param name="cust">order Object to be worked on</param>
+        /// <returns>string to be printed</returns>
         public string getOrderHistory(Model.Order cust)
         {
             var orders = context.Orders.Where(x =>x.CustomerId == cust.customer.id).ToList();
@@ -62,8 +79,11 @@ namespace Businesss
             }
             return ouput;
         }
-
-        public Model.Order storeSelect()
+        /// <summary>
+        /// Select a order based on user input
+        /// </summary>
+        /// <returns>order object</returns>
+        public Model.Order storeSelect()//dont mind the function name
         {
             Model.Order orderM = new Model.Order();
            
@@ -82,7 +102,11 @@ namespace Businesss
                       
             return orderM;
         }
-        private int checkId()
+        /// <summary>
+        /// Asks user for an ID to search for order
+        /// </summary>
+        /// <returns>A valid ID</returns>
+        public int checkId()
         {
             Console.WriteLine("Enter Order ID to continue");
             string input = Console.ReadLine();
@@ -96,6 +120,11 @@ namespace Businesss
             }
             return CId;
         }
+        /// <summary>
+        /// Returns full inventory of order
+        /// </summary>
+        /// <param name="cust">order we want to check</param>
+        /// <returns>string to be printed</returns>
         public string getInventory(Model.Order cust)
         {
 

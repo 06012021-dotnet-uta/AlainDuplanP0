@@ -1,12 +1,15 @@
 using System;
 namespace Model
 {
+    /// <summary>
+    /// Contains item id, quantity and total for data use
+    /// </summary>
     public class Inventory
     {
-
+       
         public int item { get; set; }
         public int quantity { get; set; }
-        public double total { get; set; }
+        internal double total { get; set; }
 
 
         public Inventory(int item, int quantity, double total)

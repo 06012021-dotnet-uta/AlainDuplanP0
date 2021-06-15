@@ -7,10 +7,17 @@ using Model;
 using P0Context;
 
 namespace Businesss
-{
-    public class StoreInfo
+{   
+    /// <summary>
+    /// Used to check store info
+    /// </summary>
+    public class StoreInfo : GHelpers, SHelpers
     {
         ShopperContext context = new ShopperContext();
+        /// <summary>
+        /// Select a store based on user input
+        /// </summary>
+        /// <returns>Store object</returns>
         public Model.Store storeSelect()
         {
             Model.Store storeM = new Model.Store();
@@ -29,6 +36,11 @@ namespace Businesss
             Console.WriteLine(displayInfo(storeM));
             return storeM;
         }
+        /// <summary>
+        /// Display Info about the store
+        /// </summary>
+        /// <param name="cust">Store object</param>
+        /// <returns>String to be printed</returns>
         public string displayInfo(Model.Store cust)
         {
             string output = $"Store's name is {cust.name}. \nStores's ID is {cust.id}.";
@@ -49,8 +61,11 @@ namespace Businesss
             return output;
         }
 
-
-        private int checkId()
+        /// <summary>
+        /// Asks user for an ID to search for store
+        /// </summary>
+        /// <returns>A valid ID</returns>
+        public int checkId()
         {
             Console.WriteLine("Enter Store ID to continue");
             string input = Console.ReadLine();
@@ -64,6 +79,10 @@ namespace Businesss
             }
             return CId;
         }
+        /// <summary>
+        /// Displays menu and waits for a valid user input
+        /// </summary>
+        /// <returns>Valid input</returns>
         public int whatNext()
         {
             Console.WriteLine("What would you want to do next?");
@@ -79,8 +98,12 @@ namespace Businesss
             }
             return output;
         }
-
-        private int isThisAnInt(string input)
+        /// <summary>
+        /// Checks if input was an int and loops until valid input is given
+        /// </summary>
+        /// <param name="input">Input string from ReadLine</param>
+        /// <returns>An int input</returns>
+        public int isThisAnInt(string input)
         {
             int output;
             bool sucessfulConversion = Int32.TryParse(input, out output);
@@ -95,7 +118,11 @@ namespace Businesss
             }
             return output;
         }
-
+        /// <summary>
+        /// Returns full inventory of store
+        /// </summary>
+        /// <param name="cust">Store we want to check</param>
+        /// <returns>string to be printed</returns>
         public string getInventory(Model.Store cust)
         {
             
@@ -112,7 +139,11 @@ namespace Businesss
             }
             return ouput;
         }
-
+        /// <summary>
+        /// Gets Order history of a specific store
+        /// </summary>
+        /// <param name="cust">store Object to be worked on</param>
+        /// <returns>string to be printed</returns>
         public string getOrderHistory(Model.Store cust)
         {
             var orders = context.Orders.Where(x => x.StoreId == cust.id).ToList();
@@ -135,5 +166,5 @@ namespace Businesss
             return ouput;
         }
         
-    }
-}
+    }//class
+}//namespace

@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 using Model;
 
 
-namespace P0Logic
+namespace Businesss
 {
-    public class LoginHelper
+    /// <summary>
+    /// Helps LoginContext performs functions
+    /// </summary>
+    public class LoginHelper : GHelpers, LHHelpers
     {
+        /// <summary>
+        /// Dsplays welcome prompt for ne and returning customers
+        /// </summary>
+        /// <returns>String yes/no </returns>
         public string welcomePrompt(){   Console.WriteLine("Welcome, are you a new customer? Type yes or no.");
             string input = Console.ReadLine();
             while (input.ToLower() != "yes" && input.ToLower() != "no")
@@ -19,6 +26,10 @@ namespace P0Logic
             }
             return input;
         }
+        /// <summary>
+        /// Asks user for an ID to search for user
+        /// </summary>
+        /// <returns>A valid ID</returns>
         public int checkId() {
             Console.WriteLine("Enter the CustomerID of the User you would like to use");
             string input = Console.ReadLine();
@@ -31,6 +42,10 @@ namespace P0Logic
             }
             return CId;
         }
+        /// <summary>
+        /// Asks for first and last name, checks if input is too long
+        /// </summary>
+        /// <returns>first and last name as a array of strings</returns>
         public string[] nameInput() {
             Console.WriteLine("Enter your first name");
             string Fname = Console.ReadLine().Trim();
@@ -45,7 +60,10 @@ namespace P0Logic
             }
             return arr;
         }
-
+        /// <summary>
+        /// Displays menu and waits for a valid user input
+        /// </summary>
+        /// <returns>Valid input</returns>
         public int whatNext()
         {
             Console.WriteLine("What would you want to do next?");
@@ -62,8 +80,12 @@ namespace P0Logic
             }
             return output;
         }
-
-        private int isThisAnInt(string input){
+        /// <summary>
+        /// Checks if input was an int and loops until valid input is given
+        /// </summary>
+        /// <param name="input">Input string from ReadLine</param>
+        /// <returns>An int input</returns>
+        public int isThisAnInt(string input){
             int output;
             bool sucessfulConversion = Int32.TryParse(input, out output);
             while (!sucessfulConversion){

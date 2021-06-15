@@ -8,10 +8,16 @@ using Model;
 
 namespace Businesss
 {
-    public class UserInfo
+    /// <summary>
+    /// Used to check user info
+    /// </summary>
+    public class UserInfo :  GHelpers, UHelpers
     {
         ShopperContext context = new ShopperContext();
-
+        /// <summary>
+        /// Displays menu and waits for a valid user input
+        /// </summary>
+        /// <returns>Valid input</returns>
         public int whatNext()
         {
             Console.WriteLine("What would you want to do next?");
@@ -27,8 +33,12 @@ namespace Businesss
             }
             return output;
         }
-
-        private int isThisAnInt(string input)
+        /// <summary>
+        /// Checks if input was an int and loops until valid input is given
+        /// </summary>
+        /// <param name="input">Input string from ReadLine</param>
+        /// <returns>An int input</returns>
+        public int isThisAnInt(string input)
         {
             int output;
             bool sucessfulConversion = Int32.TryParse(input, out output);
@@ -43,6 +53,11 @@ namespace Businesss
             }
             return output;
         }
+        /// <summary>
+        /// Display Info about the user
+        /// </summary>
+        /// <param name="cust">User object</param>
+        /// <returns>String to be printed</returns>
         public string displayInfo(User cust)
         {
             string output = $"User's name is {cust.fname} {cust.lname}. \nUser's ID is {cust.id}";
@@ -59,7 +74,7 @@ namespace Businesss
             return output;
         }
 
-        public string getTopStore(User cust)
+        private string getTopStore(User cust)
         {
             if(cust.storeId == 0)
                 {
@@ -84,6 +99,11 @@ namespace Businesss
              return $"\nYour recommended store is {name} with a store id of {id}";
           
         }
+        /// <summary>
+        /// Gets Order history of a specific customer
+        /// </summary>
+        /// <param name="cust">User Object to be worked on</param>
+        /// <returns>string to be printed</returns>
         public string getOrderHistory(User cust)
         {
             var orders = context.Orders.Where(x => x.CustomerId == cust.id).ToList();
@@ -105,10 +125,5 @@ namespace Businesss
             return ouput;
         }
 
-        public void getItem()
-        {
-            Console.WriteLine("Enter the item ID you want to buy");
-        }
-        
     }//class
 }// namespace

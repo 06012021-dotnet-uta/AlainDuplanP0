@@ -3,32 +3,22 @@ using System.Collections;
 using Microsoft.Extensions.DependencyInjection;
 
 
-namespace Model { 
+namespace Model {
+    /// <summary>
+    /// Holds information on the Order worked on
+    /// </summary>
     public class Order{
         
     public int store { get; set; }
     public User customer{ get; set; }
-    public DateTime time{get;}
+    private DateTime time{get;}
     
     public int id { get; set; }
     //public double total{ get; set; }
+
     private ArrayList products = new ArrayList();
        
    
-    public Order(User customer, int store, string time = ""){
-        this.store = store;
-        this.customer = customer;
-        
-        if(time != ""){
-            try{
-                this.time = DateTime.ParseExact(time, "yyyy-MM-dd HH:mm:ss,fff",  System.Globalization.CultureInfo.InvariantCulture);
-            }catch(FormatException){
-                throw;
-            }
-        }else{
-            this.time = DateTime.Now;
-        }
-    }
     
     public Order()
         {
@@ -38,21 +28,32 @@ namespace Model {
             time = DateTime.Now;
 
         }
-
+    /// <summary>
+    /// Adds item to inventory
+    /// </summary>
+    /// <param name="item">Inventory item of item id, quantity and total</param>
     public void addItem(Inventory item)
         {
             products.Add(item);
         }
+    /// <summary>
+    /// Retrieves items in the order
+    /// </summary>
+    /// <returns>Items in order</returns>
     public ArrayList getOrder()
         {
             return products;
         }
+    /// <summary>
+    /// Gets the total of all the items in the inventory
+    /// </summary>
+    /// <returns>Total cost</returns>
     public double getTotal()
         {
           double all = 0;
             foreach(Inventory i in products)
             {
-                all += i.total;
+                all += (i.total * i.quantity);
             }
             return all;
         }

@@ -17,7 +17,7 @@ namespace P0.Tests
          * Trust me I did spend hours testing my project so these tests dont really reflect it 
          */
         [Fact]
-        public void checkNameValidInput()
+        public void checkNameValidInput()//checks if searching names functionality
         {
             //Arange
             LoginContext loginC = new LoginContext();
@@ -31,7 +31,7 @@ namespace P0.Tests
 
         }
         [Fact]
-        public void testCheckIdLoginContext()
+        public void testCheckIdLoginContext()//checks if we can successfully create a user object on login
         {
             //Arange
             LoginContext loginC = new LoginContext();
@@ -46,7 +46,7 @@ namespace P0.Tests
         }
 
         [Fact]
-        public void testDisplayUserInfo()
+        public void testDisplayUserInfo()//checks if we can display accurate user info
         {
             //Arange
             UserInfo ui = new UserInfo();
@@ -61,7 +61,7 @@ namespace P0.Tests
 
         }
         [Fact]
-        public void testOrderHistory()
+        public void testOrderHistory()// checks we can display whether if a user made no order
         {
             //Arange
             UserInfo ui = new UserInfo();
@@ -77,7 +77,7 @@ namespace P0.Tests
         }
 
         [Fact]
-        public void testGetInventory()
+        public void testGetInventory()// checks if we can get the invetory of a store
         {
             //Arange
             StoreInfo si = new StoreInfo();
@@ -93,7 +93,7 @@ namespace P0.Tests
 
         }
         [Fact]
-        public void testStoreGetInventory()
+        public void testStoreGetInventory()//checks if we can get the invetory of a store
         {
             //Arange
             StoreInfo si = new StoreInfo();
@@ -108,5 +108,76 @@ namespace P0.Tests
             Assert.True(check.Contains("ID: 1006"));
 
         }
-    }
-}
+        [Fact]
+        public void testUserGetInventory() // check if we can get accurate order info
+        {
+            //Arange
+            OrderInfo oi = new OrderInfo();
+            Model.Order o = new Model.Order();
+            o.id = 1009;
+
+            //Act
+            string check = oi.getInventory(o);
+
+            //Assert
+            Assert.True(check.Contains("Eggs(ID: 1000), Quantity held: 4,"));
+
+        }
+
+        [Fact]
+        public void testAddItem() //check if we can successfully add an item
+        {
+            //Arange
+            Model.Order o = new Model.Order();
+            Model.Inventory i = new Model.Inventory(1004, 3, 40.0);
+
+
+
+            //Act
+            o.addItem(i);
+
+            //Assert
+            Assert.True(o.getOrder().Count > 0);
+
+        }
+
+        [Fact]
+        public void testGetTotal()//checks if we can get an accurate total
+        {
+            //Arange
+            Model.Order o = new Model.Order();
+            Model.Inventory i = new Model.Inventory(1004, 3, 40.0);
+
+
+
+            //Act
+            o.addItem(i);
+
+            //Assert
+            Assert.True(o.getTotal() == 120);
+
+        }
+
+        [Fact]
+        public void testAddMultiple()// test if our order can handle multiple items
+        {
+            //Arange
+            Model.Order o = new Model.Order();
+            Model.Inventory i1 = new Model.Inventory(1004, 3, 40.0);
+            Model.Inventory i2 = new Model.Inventory(1005, 5, 60.0);
+            Model.Inventory i3 = new Model.Inventory(1006, 5, 30.0);
+
+
+
+            //Act
+            o.addItem(i1);
+            o.addItem(i3);
+            o.addItem(i2);
+
+            //Assert
+            Assert.True(o.getOrder().Count == 3);
+            Assert.True(o.getTotal() == 570);
+
+        }
+    } //class
+}//namespace

@@ -3,12 +3,15 @@ using System.Collections;
 using P0Context;
 using System.Linq;
 namespace Model{
+    /// <summary>
+    /// Object containing User Info upon login
+    /// </summary>
     public class User {
 
         public string fname { get; set; }
         public string lname { get; set; }
         public int id { get; set; }
-        private Item top;
+       
         public int storeId {get; set;}
 
         public User(string fname, string lname){

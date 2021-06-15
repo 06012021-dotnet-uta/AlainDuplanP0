@@ -1,7 +1,6 @@
 ﻿using System;
 using P0Context;
 using System.Linq;
-using P0Logic;
 using Model;
 using Businesss;
 
@@ -38,6 +37,7 @@ namespace P0
             bool nextCheck = false;
             while (!nextCheck)
             {
+                #region User Stuff
                 int next = login.whatNext();// activates next prompt
                 if (next == 1) // check user history
                 {
@@ -61,6 +61,8 @@ namespace P0
                     }
 
                 }
+                #endregion
+                #region Store Stuff
                 if (next == 2) //check store history
                 {
                     StoreInfo storeInfo = new StoreInfo();
@@ -85,6 +87,8 @@ namespace P0
                     }
 
                 }
+                #endregion
+                #region Order stuff
                 if (next == 3) // make a new order/past
                 {
                     OrderInfo orderInfo = new OrderInfo();
@@ -156,12 +160,33 @@ namespace P0
                     }
 
                 }
-                if(next == 4) // add stuff
+                #endregion
+                #region Add Stuff
+                if (next == 4) // add stuff
                 {
-                    Console.WriteLine("Sorry but I didnt get a chance to imnplement this yet.");
+                    Adding adding = new Adding();
+                    int aNext = adding.whatNext();
+                    if(aNext == 1)//add store
+                    {
+                        Console.WriteLine("\nLets Open a Store");
+                        adding.inputArr(adding.nameInput());
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+                    }
+                    if (aNext == 2)//restock                        
+                    {
+
+                        AddingItem newItem = new AddingItem();
+                        newItem.finalize();
+                        Console.WriteLine("\nReturning you to the main Screen now.\n");
+                    }
+                    if (aNext == 3)//exit
+                    {
+                        nextCheck = false;
+                    }
                     Console.WriteLine("\nReturning you to the main Screen now.\n");
 
                 }
+                #endregion
                 if (next == 5) // exit
                 {
                     nextCheck = true;
