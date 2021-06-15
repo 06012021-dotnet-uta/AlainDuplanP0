@@ -1,0 +1,45 @@
+div {
+    width: 300px;
+    background-color: peru;
+}
+
+.class1{
+    border: 15px dotted slateblue;
+    width: 200px;
+}
+.class1:active{
+    border: 15px dotted rgb(205, 90, 125);
+    width: 200px;
+}
+.class1:hover{
+    background-color: rgb(255, 126, 5);
+    width: 200px;
+}
+a:visited{
+    border: 15px dotted rgb(26, 255, 5);
+    width: 200px;
+}
+#number{
+    color:darkred;
+}
+div>h3:hover{
+    background-color: black;
+}
+label{
+    background-color: blue;
+}
+label::after{
+    background-color:darkgreen;
+}
+li+ol{
+    color: blueviolet;
+}
+form>{
+    background-color: blueviolet;
+}
+#myimg{
+    position: sticky;
+    top : 80px;
+    right: 0px;
+    border: 8px solid black;
+}
