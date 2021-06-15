@@ -15,6 +15,7 @@ namespace Businesss
         {
             Model.Order orderM = new Model.Order();
             Console.WriteLine("Enter Store ID to shop at");
+            
             int SId = checkId();
             P0Context.Store orderC = context.Stores.Where(x => x.StoreId == SId).FirstOrDefault();
             if (orderC == null)

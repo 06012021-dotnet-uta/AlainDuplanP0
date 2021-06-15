@@ -105,7 +105,10 @@ namespace Businesss
             return ouput;
         }
 
-        
+        public void getItem()
+        {
+            Console.WriteLine("Enter the item ID you want to buy");
+        }
         
     }//class
 }// namespace

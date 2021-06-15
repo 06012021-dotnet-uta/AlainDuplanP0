@@ -34,7 +34,7 @@ namespace Businesss
             string output = $"Store's name is {cust.name}. \nStores's ID is {cust.id}.";
             string local;
             if (cust.location != null)
-                local = $"\nStore's is located at {cust.location}.";
+                local = $"Store's is located at {cust.location}.";
             else
                 local = "Store has no location data!";
             output += local;
@@ -44,7 +44,7 @@ namespace Businesss
                               join i in context.Items on oi.ItemId equals i.ItemId
                               where o.StoreId == cust.id
                               select oi.Quantity * i.ItemPrice).Sum();
-            string orders = $"\nIt has a total of {orderCount} orders and a revenue of ${orderTotal} \n";
+            string orders = $"It has a total of {orderCount} orders and a revenue of ${orderTotal} \n";
             output += orders;
             return output;
         }
