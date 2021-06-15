@@ -11,14 +11,14 @@ namespace Model {
     public DateTime time{get;}
     
     public int id { get; set; }
-    public double total{ get; set; }
+    //public double total{ get; set; }
     private ArrayList products = new ArrayList();
        
    
     public Order(User customer, int store, string time = ""){
         this.store = store;
         this.customer = customer;
-        total = 0;
+        
         if(time != ""){
             try{
                 this.time = DateTime.ParseExact(time, "yyyy-MM-dd HH:mm:ss,fff",  System.Globalization.CultureInfo.InvariantCulture);
@@ -34,18 +34,27 @@ namespace Model {
         {
             store = 0;
             customer = null;
-            total = 0;
+            
             time = DateTime.Now;
 
         }
 
-    public void addItem(Item item)
+    public void addItem(Inventory item)
         {
             products.Add(item);
         }
     public ArrayList getOrder()
         {
             return products;
+        }
+    public double getTotal()
+        {
+          double all = 0;
+            foreach(Inventory i in products)
+            {
+                all += i.total;
+            }
+            return all;
         }
 }
 }

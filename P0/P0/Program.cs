@@ -97,7 +97,14 @@ namespace P0
                     int oNext = orderInfo.whatNext();
                     if (oNext == 1)//check past order
                     {
-                        Console.WriteLine(orderInfo.getOrderHistory(order));
+                        string finalCheck = orderInfo.getOrderHistory(order);
+                        if(finalCheck == "Ooops, looks you made no orders yet")
+                        {
+                            Console.WriteLine(finalCheck);
+                            nextCheck = false;
+                            continue;
+                        }
+                        Console.WriteLine(finalCheck);
                         Console.WriteLine();
                         order.id = orderInfo.storeSelect().id;
                         
@@ -110,8 +117,31 @@ namespace P0
                         order.store = newOrder.storeSelect().id;
                         //Console.WriteLine("\nReturning you to the main Screen now.\n");
                         bool getCheck = newOrder.takeItem(order);
+                        
                         if (getCheck)
                         {
+                            string confirm = "";
+                            
+                            while (confirm != "yes")
+                            {
+                                order = newOrder.getItem(order);
+                                Console.WriteLine($"Your cart total is ${order.getTotal()}.Ready to check out? Enter yes to check out or something else to kep shopping");
+                                Console.WriteLine("Remember this is final so be careful");
+                                confirm = Console.ReadLine().ToLower();                               
+                            }
+                            Console.WriteLine($"Wow your going to spend ${order.getTotal()}. This is the last chance to back out");
+                            Console.WriteLine("ENTER 'YES' TO FINALIZE");
+                            string last = Console.ReadLine().ToLower();
+                            if(last == "yes")
+                            {
+                                Console.WriteLine("Bold, well we are finallizing your order now. Please wait, my computer has low memory.");
+                                int id = newOrder.finalized(order);
+                                Console.WriteLine($"We finalized your order at Store #{order.store}. You spent a total of ${order.getTotal()}. Your Order ID is {id}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Smart choice, I dont have to go to the trouble of restocking");
+                            }
                             Console.WriteLine("\nReturning you to the main Screen now.\n");
                         }
                         else
