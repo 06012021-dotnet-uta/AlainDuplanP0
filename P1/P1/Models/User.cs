@@ -47,6 +47,8 @@ namespace Models
             auth = (int)context.Customers.Where(x => x.CustomerId == CId).Select(x => x.Auth).FirstOrDefault();
         }
 
+        
+
     }
 
 }

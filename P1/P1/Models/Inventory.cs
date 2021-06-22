@@ -9,14 +9,14 @@ namespace Models
 
         public int item { get; set; }
         public int quantity { get; set; }
-        internal double total { get; set; }
+        internal double price { get; set; }
 
 
-        public Inventory(int item, int quantity, double total)
+        public Inventory(int item, int quantity, double price)
         {
             this.item = item;
             this.quantity = quantity;
-            this.total = total;
+            this.price = price;
         }
     }
 }

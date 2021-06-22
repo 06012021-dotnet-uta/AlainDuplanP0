@@ -55,7 +55,7 @@ namespace Models
             double all = 0;
             foreach (Inventory i in products)
             {
-                all += (i.total * i.quantity);
+                all += (i.price * i.quantity);
             }
             return all;
         }

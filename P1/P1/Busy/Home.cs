@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Busy
 {
-    class Home
+    public class Home
     {
     }
 }
