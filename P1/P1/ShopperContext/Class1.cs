@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Business
+namespace ShopperContext
 {
     public class Class1
     {
