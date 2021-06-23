@@ -1,0 +1,37 @@
+﻿@model P1.Models.User
+
+@{
+    ViewData["Title"] = "VerifyCreateUser";
+}
+
+<h1>VerifyCreateUser</h1>
+
+<div>
+    <h4>Please Verify your data and hit submit.</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.top)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.top)
+        </dd>
+    </dl>
+</div>
+<div>
+    <button class="btn-light"><a  asp-area="" asp-controller="Login" asp-action="Create">Return to Edit</a></button>
+    <button class="btn-light" onclick="location.href = '@Url.Action("CreateNewUser", "Login", Model)'">Submit</button>
+    <button class="btn-light"><a  asp-area="" asp-controller="Home" asp-action="Index">Back to Home</a></button>
+</div>

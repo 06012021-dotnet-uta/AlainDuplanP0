@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
-using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.Extensions.DependencyInjection;
 
 
-namespace Models
+namespace ModelsDefault
 {
     /// <summary>
     /// Holds information on the Order worked on

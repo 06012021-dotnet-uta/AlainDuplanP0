@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Models\ModelsDefault.csproj" />
     <ProjectReference Include="..\ShopperContext\ShopperContext.csproj" />
   </ItemGroup>
 

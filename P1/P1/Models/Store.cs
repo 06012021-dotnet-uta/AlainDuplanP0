@@ -3,7 +3,7 @@ using System.Collections;
 
 using System.Linq;
 
-namespace Models
+namespace ModelsDefault
 {
     /// <summary>
     /// Holds information about the store selected

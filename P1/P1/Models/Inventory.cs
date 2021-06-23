@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Models
+namespace ModelsDefault
 {
     /// <summary>
     /// Contains item id, quantity and total for data use

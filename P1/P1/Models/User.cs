@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
-using ShopperContext;
+//using ShopperContext;
 using System.Linq;
-namespace Models
+namespace ModelsDefault
 {
     /// <summary>
     /// Object containing User Info upon login
@@ -17,6 +17,11 @@ namespace Models
         public int storeId { get; set; }
 
         public int auth { get; set; }
+
+        public User()
+        {
+
+        }
 
         public User(string fname, string lname)
         {
@@ -34,7 +39,7 @@ namespace Models
             auth = 0;
         }
 
-        public User(ShopperContext.ShopperContext context, int CId)
+       /* public User(ShopperContext.ShopperContext context, int CId)
         {
             this.fname = context.Customers.Where(x => x.CustomerId == CId).Select(x => x.CustomerFname).FirstOrDefault();
             this.lname = context.Customers.Where(x => x.CustomerId == CId).Select(x => x.CustomerLname).FirstOrDefault();
@@ -45,7 +50,7 @@ namespace Models
                 storeId = (int)top;
             this.id = CId;
             auth = (int)context.Customers.Where(x => x.CustomerId == CId).Select(x => x.Auth).FirstOrDefault();
-        }
+        }*/
 
         
 
