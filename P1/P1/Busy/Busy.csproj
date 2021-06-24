@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\ModelsDefault.csproj" />
-    <ProjectReference Include="..\ShopperContext\ShopperContext.csproj" />
   </ItemGroup>
 
 </Project>

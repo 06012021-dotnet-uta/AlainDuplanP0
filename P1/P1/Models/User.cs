@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
 //using ShopperContext;
 using System.Linq;
 namespace ModelsDefault
@@ -12,18 +13,24 @@ namespace ModelsDefault
 
         public string fname { get; set; }
         public string lname { get; set; }
+
+        [Range(1000, 1099)]
         public int id { get; set; }
 
         public int storeId { get; set; }
 
         public int auth { get; set; }
 
+        public int totalOrders { get; set; }
+
+        public double totalSpent { get; set; }
+
         public User()
         {
 
         }
 
-        public User(string fname, string lname)
+       /* public User(string fname, string lname)
         {
             if (fname == "")
             {
@@ -37,7 +44,7 @@ namespace ModelsDefault
             else { this.lname = lname; }
             id = 0;
             auth = 0;
-        }
+        } */
 
        /* public User(ShopperContext.ShopperContext context, int CId)
         {

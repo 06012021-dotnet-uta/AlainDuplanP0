@@ -50,7 +50,7 @@ namespace P1.Controllers
             //check that the model binding worked.
             if (!ModelState.IsValid)
             {
-                RedirectToAction("Login");
+                RedirectToAction("Create");
             }
 
             bool myBool = await signUp.registerUser(user.Fname, user.Lname, user.top);
@@ -73,46 +73,36 @@ namespace P1.Controllers
             }
         }
 
-        // GET: LoginController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: LoginController/Login
+        public ActionResult Login()
         {
-            return View();
+            return View("LoginUser");
         }
 
-        // POST: LoginController/Edit/5
+        // GET: LoginController/OopsLogin
+        public ActionResult OopsLogin()
+        {
+            return View("OopsLogin");
+        }
+        // POST: LoginController/UserLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult LoginUser(ModelsDefault.User user)
         {
-            try
+            //check that the model binding worked.
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                RedirectToAction("OopsLogin");
             }
-            catch
+
+            if (signUp.checkID(user.id))
             {
-                return View();
+                return View("Welcome", signUp.getUser(user));
             }
+
+            return RedirectToAction("OopsLogin");
         }
 
-        // GET: LoginController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: LoginController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
