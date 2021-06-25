@@ -1,0 +1,30 @@
+Create schema RPS;
+GO
+
+CREATE TABLE RPS.Player(
+    Id INT NOT NULL IDENTITY(1000, 1),
+    FName VARCHAR(25) NOT NULL,
+    LName VARCHAR(25) NOT NULL,
+    Addy VARCHAR(100) NULL,
+    Age INT NULL
+    PRIMARY KEY(Id),
+    CONSTRAINT AgeValid CHECK (Age < 125 and Age >= 0)
+);
+
+CREATE TABLE RPS.Rounds(
+    Id INT NOT NULL IDENTITY(1000, 1),
+    P1Choice int not null,
+    P2Choice int not null,
+    PRIMARY KEY(Id)
+);
+
+CREATE TABLE RPS.Game(
+    Id INT NOT NULL IDENTITY(1000, 1),
+    Player1 INT NOT NULL FOREIGN KEY REFERENCES RPS.Player,
+    Player2 INT NOT NULL FOREIGN KEY REFERENCES RPS.Player,
+    Round1 INT FOREIGN KEY REFERENCES RPS.Rounds,
+    Round2 INT FOREIGN KEY REFERENCES RPS.Rounds,
+    Round3 INT FOREIGN KEY REFERENCES RPS.Rounds,
+);
+
+
