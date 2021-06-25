@@ -25,6 +25,8 @@ namespace ModelsDefault
 
         public double totalSpent { get; set; }
 
+        public User admin { get; set; }
+
         public User()
         {
 

@@ -12,9 +12,10 @@ namespace ModelsDefault
     {
 
         public int store { get; set; }
-        public User customer { get; set; }
-        private DateTime time { get; }
+        public int custId { get; set; }
+        public DateTime time { get; set; }
 
+        public double total { get; set; }
         public int id { get; set; }
         //public double total{ get; set; }
 
@@ -24,10 +25,7 @@ namespace ModelsDefault
 
         public Order()
         {
-            store = 0;
-            customer = null;
-
-            time = DateTime.Now;
+            
 
         }
         /// <summary>
