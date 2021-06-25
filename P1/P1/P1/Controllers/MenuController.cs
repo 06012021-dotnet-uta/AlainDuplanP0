@@ -25,15 +25,25 @@ namespace P1.Controllers
             UserOrders uo = new UserOrders();
             return View("OrderDetails", uo.getOrderItems(order).Cast<ModelsDefault.Inventory>().GetEnumerator());
         }
-        // GET: MenuController/UserSearch
-        public ActionResult UserSearch(ModelsDefault.User user)
+        // GET: MenuController/Search
+        public ActionResult Search(ModelsDefault.User user)
         {
             if (user.auth < 1)
             {
                 return View("ErrorCred");
             }
-            UserOrders uo = new UserOrders();
-            return View("OrderDetails");//, uo.getOrderItems(order).Cast<ModelsDefault.Inventory>().GetEnumerator());
+            //UserOrders uo = new UserOrders();
+            return View("UserSearch", user);
+        }
+        // Post : MenuController/FoundUsers
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserSearch(ModelsDefault.User user)
+        {
+            UserSearch us = new UserSearch();
+
+
+            return View("ListUsers", us.listUsers(user).Cast<ModelsDefault.User>().GetEnumerator());
         }
         public ActionResult Index()
         {

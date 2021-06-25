@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ModelsDefault.User>
+
+@{
+    ViewData["Title"] = "ListUsers";
+}
+
+<h1>List of Users</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.storeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.auth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalOrders)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalSpent)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.storeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.auth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalOrders)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalSpent)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
+</div>

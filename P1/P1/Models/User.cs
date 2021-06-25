@@ -25,10 +25,16 @@ namespace ModelsDefault
 
         public double totalSpent { get; set; }
 
+        public string findF { get; set; }
+
+        public string findL { get; set; }
+
         public User admin { get; set; }
 
         public User()
         {
+            findF = "";
+            findL = "";
 
         }
 
