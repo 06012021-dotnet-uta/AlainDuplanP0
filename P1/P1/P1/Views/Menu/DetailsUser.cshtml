@@ -1,0 +1,60 @@
+﻿@model ModelsDefault.User
+
+@{
+    ViewData["Title"] = "DetailsUser";
+}
+
+<h1>DetailsUser</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           First Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fname)
+        </dd>
+        <dt class = "col-sm-2">
+           Last Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lname)
+        </dd>
+        <dt class = "col-sm-2">
+           User Id:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            Store Id:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.storeId)
+        </dd>
+        <dt class = "col-sm-2">
+            Authorization Level:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.auth)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Amount of Orders:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.totalOrders)
+        </dd>
+        <dt class = "col-sm-2">
+           Total Spent:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.totalSpent)
+        </dd>
+          </dl>
+</div>
+<div>
+    <button class="btn-light">@Html.ActionLink("Check Previous Orders", "PrevOrder", "Menu", Model)</button>
+    <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
+</div>

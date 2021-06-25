@@ -51,9 +51,9 @@ namespace P1.Controllers
         }
 
         // GET: MenuController1/Details/5
-        public ActionResult Details(int id)
+        public ActionResult DetailsUser(ModelsDefault.User user)
         {
-            return View();
+            return View("DetailsUser", user);
         }
 
         // GET: MenuController1/Create
