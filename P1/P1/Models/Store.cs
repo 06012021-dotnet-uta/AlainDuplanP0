@@ -10,7 +10,7 @@ namespace ModelsDefault
     /// </summary>
     public class Store
     {
-        public int userAuth { get; set; }
+        public int admin { get; set; }
         public string name { get; set; }
         public string location { get; set; }
 

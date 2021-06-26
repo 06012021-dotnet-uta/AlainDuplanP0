@@ -12,6 +12,7 @@ namespace P1.Controllers
     public class StoresController : Controller
     {
         public int auth;
+        StoreSearch sto3 = new StoreSearch();
         // GET: StoreController/Search
         public ActionResult Search(ModelsDefault.User user)
         {
@@ -29,7 +30,8 @@ namespace P1.Controllers
         public ActionResult StoreSearch(ModelsDefault.User user)
         {
             StoreSearch store = new StoreSearch(user);
-
+            ViewBag.Auth = user.auth;
+            sto3.admin = user.auth;
 
             return View("ListStore", store.listsStores(user).Cast<ModelsDefault.Store>().GetEnumerator());
         }
@@ -47,6 +49,10 @@ namespace P1.Controllers
         }
         public ActionResult OrderDetails(ModelsDefault.Order order)
         {
+            if (ViewBag.Auth < 1)
+            {
+                return View("ErrorCred");
+            }
             UserOrders uo = new UserOrders();
             return View("OrderDetails", uo.getOrderItems(order).Cast<ModelsDefault.Inventory>().GetEnumerator());
         }
@@ -59,10 +65,11 @@ namespace P1.Controllers
 
         public ActionResult AddStore()
         {
-            if (ViewBag.Auth < 2)
-            {
-                return View("ErrorCred");
-            }
+
+           // if (sto3.admin < 2)
+           // {
+           //     return View("ErrorCred");
+           // }
 
             return View("createStore");
         }
@@ -84,79 +91,31 @@ namespace P1.Controllers
 
             return View("NewStore", temp);
         }
+
+        public ActionResult Inventory(ModelsDefault.Store store)
+        {
+            StoreSearch sto = new StoreSearch();
+
+            return View("Inventory", sto.getInventory(store).Cast<ModelsDefault.Inventory>().GetEnumerator());
+        }
+        public ActionResult Restock(ModelsDefault.Inventory x)
+        {
+            return View("AddItem", x);
+        }
+        public ActionResult AddItem(ModelsDefault.Inventory store)
+        {
+            StoreSearch sto = new StoreSearch();
+            sto.addItem(store.adder, store);
+            ModelsDefault.Store temp = sto.getStore2(store.store);
+            return View("Inventory", sto.getInventory(temp).Cast<ModelsDefault.Inventory>().GetEnumerator());
+        }
         // GET: StoresController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: StoresController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: StoresController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: StoresController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StoresController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: StoresController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StoresController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: StoresController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
+        
     }
 }

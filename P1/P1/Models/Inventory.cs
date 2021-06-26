@@ -14,6 +14,10 @@ namespace ModelsDefault
         public double price { get; set; }
 
         public string descr { get; set; }
+
+        public int store { get; set; }
+
+        public int adder { get; set; }
      
 
 

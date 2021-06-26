@@ -12,6 +12,7 @@ namespace Busy
     {
         ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
         ModelsDefault.User us;
+        public int admin { get; set; }
         public StoreSearch() { }
         public StoreSearch(ModelsDefault.User us)
         {
@@ -37,7 +38,7 @@ namespace Busy
             foreach (var c in choices)
             {
                 ModelsDefault.Store temp = new ModelsDefault.Store();
-                temp.userAuth = a;
+                temp.admin = user.id;
                 temp.id = c.StoreId;
                 temp.name = c.StoreName;
                 temp.location = c.StoreLocation;
@@ -70,6 +71,7 @@ namespace Busy
                 order.store = o.StoreId;
                 order.id = o.OrdersId;
                 order.total = 0;
+                //order.auth = (int)context.Customers.Where(x => x.CustomerId == cust.admin).Select(x => x.Auth).FirstOrDefault();
 
                 var inv = context.OrderInventories.Where(x => x.OrdersId == o.OrdersId).ToList();
 
@@ -113,6 +115,61 @@ namespace Busy
             return temp;
 
 
+        }
+        public ModelsDefault.Store getStore2(int id)
+        {
+
+            ShopperContext.Store c;
+            c = context.Stores.Where(x => x.StoreId == id).FirstOrDefault();
+
+            ModelsDefault.Store temp = new ModelsDefault.Store();
+            //temp.admin = user.id;
+            temp.id = c.StoreId;
+            temp.name = c.StoreName;
+            temp.location = c.StoreLocation;
+            temp.numOrders = context.Stores.Where(x => x.StoreId == c.StoreId).Count();
+            temp.total = (double)(from oi in context.OrderInventories
+                                  join o in context.Orders on oi.OrdersId equals o.OrdersId
+                                  join i in context.Items on oi.ItemId equals i.ItemId
+                                  where o.StoreId == temp.id
+                                  select oi.Quantity * i.ItemPrice).Sum();
+            return temp;
+
+
+        }
+        public ArrayList getInventory(ModelsDefault.Store store)
+        {
+            ArrayList arr = new ArrayList();
+
+            var choices = context.StoreInventories.Where(x => x.StoreId == store.id).ToList();
+
+            if (!choices.Any())
+            {
+                return arr;
+            }
+            foreach(var i in choices)
+            {
+                ModelsDefault.Inventory inv = new ModelsDefault.Inventory();
+                inv.store = i.StoreId;
+                inv.id = i.ItemId;
+                inv.name = context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemName).FirstOrDefault();
+                inv.quantity = i.Quantity;
+                inv.price = (double)context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemPrice).FirstOrDefault();
+                inv.descr = context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemDescription).FirstOrDefault();
+
+                arr.Add(inv);
+            }
+
+            return arr;
+        }
+        public void addItem(int add, ModelsDefault.Inventory inv)
+        {
+            ShopperContext.StoreInventory temp = context.StoreInventories.Where(x => x.StoreId == inv.store && x.ItemId == inv.item).FirstOrDefault();
+            temp.Quantity += add;
+            context.StoreInventories.Attach(temp);
+            context.Entry(temp).Property(x => x.Quantity).IsModified = true;
+            context.SaveChanges();
+            return;
         }
     }
 }

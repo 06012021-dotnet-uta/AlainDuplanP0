@@ -21,7 +21,7 @@ namespace ModelsDefault
 
         private ArrayList products = new ArrayList();
 
-
+        public int auth { get; set; }
 
         public Order()
         {
