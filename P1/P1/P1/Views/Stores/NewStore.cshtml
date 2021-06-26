@@ -1,0 +1,37 @@
+﻿@model ModelsDefault.Store
+
+@{
+    ViewData["Title"] = "NewStore";
+}
+
+<h1>New Store Has Been Opened!</h1>
+
+<div>
+    <h4>Store</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Store Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            Store Location
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.location)
+        </dd>       
+        <dt class="col-sm-2">
+            Store ID:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <div>
+        @Html.ActionLink("Return Home", "LoginUser", "Login", Model.user)
+        <a asp-action="Index">Back to List</a>
+    </div>

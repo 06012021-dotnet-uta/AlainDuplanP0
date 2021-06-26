@@ -31,10 +31,12 @@ namespace ModelsDefault
 
         public User admin { get; set; }
 
+        public string findStore { get; set; }
         public User()
         {
             findF = "";
             findL = "";
+            findStore = "";
 
         }
 

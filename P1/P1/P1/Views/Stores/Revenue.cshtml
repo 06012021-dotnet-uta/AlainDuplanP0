@@ -1,0 +1,47 @@
+﻿@model ModelsDefault.Store
+
+@{
+    ViewData["Title"] = "Revenue";
+}
+
+<h1>Store Details</h1>
+
+<div>
+    <h4>Store</h4>
+    <hr />
+    <dl class="row">        
+        <dt class = "col-sm-2">
+            Store Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            Store Location
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.location)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Number of Orders
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.numOrders)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Revenue
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.total)
+        </dd>
+        <dt class = "col-sm-2">
+            Store ID:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
+</div>

@@ -57,7 +57,7 @@
 <div>
     <button class="btn-light">@Html.ActionLink("Check Previous Orders", "PrevOrder", "Menu", Model)</button>
     <button class="btn-light">@Html.ActionLink("Search For Users", "Search", "Menu", Model)</button>
-    <button class="btn-light"><a asp-area="" asp-controller="Home" asp-action="Index">Search Stores</a></button>
+    <button class="btn-light">@Html.ActionLink("Search For Stores", "Search", "Stores", Model)</button>
     <button class="btn-light"><a asp-area="" asp-controller="Home" asp-action="Index">Start New Order</a></button>
     <button class="btn-light"><a asp-area="" asp-controller="Home" asp-action="Index">Log Out</a></button>
 </div>

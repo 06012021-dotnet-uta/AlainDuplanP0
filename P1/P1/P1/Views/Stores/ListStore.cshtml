@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ModelsDefault.Store>
+
+@{
+    ViewData["Title"] = "ListStore";
+}
+
+<h1>Stores</h1>
+
+@Html.ActionLink("Add Store", "AddStore", ViewBag.user)
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Store Name
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Store ID
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.ActionLink("Orders", "Orders", item) |
+                    @Html.ActionLink("Inventory", "Inventory", item) |
+                    @Html.ActionLink("Revenue", "Revenue", item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
+</div>

@@ -10,29 +10,22 @@ namespace ModelsDefault
     /// </summary>
     public class Store
     {
-
+        public int userAuth { get; set; }
         public string name { get; set; }
         public string location { get; set; }
 
+        public int numOrders { get; set; }
+        public double total { get; set; }
+
         public int id { get; set; }
 
+        public ModelsDefault.User user { get; set; }
 
         public Store() { }
 
 
 
-        public Store(string name, string location, int id)
-        {
-            this.name = name;
-            this.location = location;
-            this.id = id;
-        }
-        public Store(string name, string location)
-        {
-            this.name = name;
-            this.location = location;
-            this.id = 0;
-        }
+        
 
     }
 

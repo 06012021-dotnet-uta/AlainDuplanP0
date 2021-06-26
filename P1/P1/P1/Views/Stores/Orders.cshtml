@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ModelsDefault.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Orders</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Store ID:
+            </th>
+            <th>
+                Customer ID:
+            </th>
+            <th>
+                Time of Purchase:
+            </th>
+            <th>
+                Total Spent:
+            </th>
+            <th>
+                Order ID:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.store)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.custId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "OrderDetails", "Menu", item)
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
+</div>
