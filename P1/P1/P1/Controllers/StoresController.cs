@@ -98,10 +98,13 @@ namespace P1.Controllers
 
             return View("Inventory", sto.getInventory(store).Cast<ModelsDefault.Inventory>().GetEnumerator());
         }
+        
         public ActionResult Restock(ModelsDefault.Inventory x)
         {
             return View("AddItem", x);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddItem(ModelsDefault.Inventory store)
         {
             StoreSearch sto = new StoreSearch();
