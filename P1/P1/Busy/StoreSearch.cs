@@ -152,6 +152,7 @@ namespace Busy
                 ModelsDefault.Inventory inv = new ModelsDefault.Inventory();
                 inv.store = i.StoreId;
                 inv.id = i.ItemId;
+
                 inv.name = context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemName).FirstOrDefault();
                 inv.quantity = i.Quantity;
                 inv.price = (double)context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemPrice).FirstOrDefault();
@@ -164,7 +165,7 @@ namespace Busy
         }
         public void addItem(int add, ModelsDefault.Inventory inv)
         {
-            ShopperContext.StoreInventory temp = context.StoreInventories.Where(x => x.StoreId == inv.store && x.ItemId == inv.item).FirstOrDefault();
+            ShopperContext.StoreInventory temp = context.StoreInventories.Where(x => x.StoreId == inv.store && x.ItemId == inv.id).FirstOrDefault();
             temp.Quantity += add;
             context.StoreInventories.Attach(temp);
             context.Entry(temp).Property(x => x.Quantity).IsModified = true;

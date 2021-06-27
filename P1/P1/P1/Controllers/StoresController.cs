@@ -105,12 +105,13 @@ namespace P1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem(ModelsDefault.Inventory store)
+        public ActionResult AddItem(ModelsDefault.Inventory model)
         {
             StoreSearch sto = new StoreSearch();
-            sto.addItem(store.adder, store);
-            ModelsDefault.Store temp = sto.getStore2(store.store);
+            sto.addItem(model.adder, model);
+            ModelsDefault.Store temp = sto.getStore2(model.store);
             return View("Inventory", sto.getInventory(temp).Cast<ModelsDefault.Inventory>().GetEnumerator());
+            //return View("AddItem", model);
         }
         // GET: StoresController
         public ActionResult Index()
