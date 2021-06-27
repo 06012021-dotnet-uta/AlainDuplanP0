@@ -18,7 +18,10 @@ namespace Busy
         {
             this.us = us;
         }
-        public ArrayList listsStores (ModelsDefault.User user)
+
+        
+
+            public ArrayList listsStores (ModelsDefault.User user)
         {
             ArrayList arr = new ArrayList();
 

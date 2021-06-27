@@ -4,7 +4,7 @@
     ViewData["Title"] = "AddItem";
 }
 
-<h1>AddItem</h1>
+<h1>Add Items</h1>
 
 <h4>Inventory</h4>
 <hr />
@@ -12,43 +12,45 @@
     <div class="col-md-4">
         <form asp-action="AddItem">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <span hidden>
+                <div class="form-group">
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="name" class="control-label"></label>
+                    <input asp-for="name" class="form-control" />
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="item" class="control-label"></label>
+                    <input asp-for="item" class="form-control" />
+                    <span asp-validation-for="item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="quantity" class="control-label"></label>
+                    <input asp-for="quantity" class="form-control" />
+                    <span asp-validation-for="quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="price" class="control-label"></label>
+                    <input asp-for="price" class="form-control" />
+                    <span asp-validation-for="price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="descr" class="control-label"></label>
+                    <input asp-for="descr" class="form-control" />
+                    <span asp-validation-for="descr" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="store" class="control-label"></label>
+                    <input asp-for="store" class="form-control" />
+                    <span asp-validation-for="store" class="text-danger"></span>
+                </div>
+            </span>
             <div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="item" class="control-label"></label>
-                <input asp-for="item" class="form-control" />
-                <span asp-validation-for="item" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="quantity" class="control-label"></label>
-                <input asp-for="quantity" class="form-control" />
-                <span asp-validation-for="quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="price" class="control-label"></label>
-                <input asp-for="price" class="form-control" />
-                <span asp-validation-for="price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="descr" class="control-label"></label>
-                <input asp-for="descr" class="form-control" />
-                <span asp-validation-for="descr" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="store" class="control-label"></label>
-                <input asp-for="store" class="form-control" />
-                <span asp-validation-for="store" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="adder" class="control-label"></label>
+                <label asp-for="adder" class="control-label">Amount to Add</label>
                 <input asp-for="adder" class="form-control" />
                 <span asp-validation-for="adder" class="text-danger"></span>
             </div>
@@ -60,6 +62,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
 </div>
 

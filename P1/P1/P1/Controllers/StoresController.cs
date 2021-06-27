@@ -20,8 +20,21 @@ namespace P1.Controllers
 
             ViewBag.user = user;
             ViewBag.Auth = user.auth;
+
+             if (user.auth < 1)
+            {
+                return View("ErrorCred");
+            }
             //UserOrders uo = new UserOrders();
             return View("StoreSearch", user);
+        }
+        public ActionResult Search2(ModelsDefault.User user)
+        {
+            StoreSearch store = new StoreSearch();
+
+            
+            //UserOrders uo = new UserOrders();
+            return View("StoreSearch2", user);
         }
 
         // Post : StoreController/StoreSearch
@@ -34,6 +47,16 @@ namespace P1.Controllers
             sto3.admin = user.auth;
 
             return View("ListStore", store.listsStores(user).Cast<ModelsDefault.Store>().GetEnumerator());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult StoreSearch2(ModelsDefault.User user)
+        {
+            StoreSearch store = new StoreSearch(user);
+            ViewBag.Auth = user.auth;
+            sto3.admin = user.auth;
+
+            return View("ListStore2", store.listsStores(user).Cast<ModelsDefault.Store>().GetEnumerator());
         }
 
         public ActionResult Orders(ModelsDefault.Store store)
