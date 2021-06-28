@@ -15,24 +15,37 @@ namespace P1.Controllers
         // GET: OrderController/Search
         public ActionResult Search(ModelsDefault.User user)
         {
-            StoreSearch store = new StoreSearch();
+            //StoreSearch store = new StoreSearch();
 
             ViewBag.user = user;
             ViewBag.Auth = user.auth;
 
             ModelsDefault.Order order = new ModelsDefault.Order();
             order.custId = user.id;
+            order.store = user.storeId;
             
 
             
             //UserOrders uo = new UserOrders();
-            return View("StoreSearch", user);
+            return View("createOrder", order);
         }
 
         // GET: OrderController/Details/5
-        public ActionResult Details(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult createOrder(ModelsDefault.Order order)
         {
-            return View();
+            NewOrder newOrder = new NewOrder();
+
+            if (newOrder.checkStore(order.store))
+            {
+                return View("ErrorStore");
+            }
+
+            ModelsDefault.Order temp = newOrder.startOrder(order);
+
+            return View("ViewOrder", temp);
+
         }
 
         // GET: OrderController/Create

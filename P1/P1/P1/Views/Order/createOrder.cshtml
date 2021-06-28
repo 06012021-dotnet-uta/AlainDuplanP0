@@ -1,0 +1,55 @@
+﻿@model ModelsDefault.Order
+
+@{
+    ViewData["Title"] = "createOrder";
+}
+
+<h1>createOrder</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="createOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="store" class="control-label">Enter Store ID to Shop From</label>
+                <input asp-for="store" class="form-control" />
+                <span asp-validation-for="store" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="custId" class="control-label"></label>
+                <input asp-for="custId" class="form-control" />
+                <span asp-validation-for="custId" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="time" class="control-label"></label>
+                <input asp-for="time" class="form-control" />
+                <span asp-validation-for="time" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="total" class="control-label"></label>
+                <input asp-for="total" class="form-control" />
+                <span asp-validation-for="total" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="auth" class="control-label"></label>
+                <input asp-for="auth" class="form-control" />
+                <span asp-validation-for="auth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
