@@ -19,6 +19,10 @@ namespace ModelsDefault
 
         public int id { get; set; }
 
+        //public int order { get; set; }
+
+       
+
         public ModelsDefault.User user { get; set; }
 
         public Store() { }

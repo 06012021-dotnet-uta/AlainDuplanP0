@@ -18,6 +18,7 @@ namespace ModelsDefault
         public int store { get; set; }
 
         public int adder { get; set; }
+        public int order { get; set; }
      
 
 

@@ -69,6 +69,7 @@ namespace Busy
                 inv.quantity = i.Quantity;
                 inv.price = (double)context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemPrice).FirstOrDefault();
                 inv.descr = context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemDescription).FirstOrDefault();
+                inv.order = i.OrdersId;
 
                 arr.Add(inv);
             }

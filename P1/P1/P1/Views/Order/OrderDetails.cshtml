@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ModelsDefault.Inventory>
+
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+<h1>Order Details @ViewBag.id</h1>
+
+<div>
+    <button class="btn-light">@Html.ActionLink("Back to Order", "Build")</button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item ID:
+            </th>
+            <th>
+                Item Name:
+            </th>
+            <th>
+                Quanity Ordered:
+            </th>
+            <th>
+                Indiviual Price:
+            </th>
+            <th>
+                Item Desciption:
+            </th>
+            <th>
+                Accumulated Price:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @{int y = 0; }
+    <tbody>
+        @{ double x = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descr)
+                </td>
+                <td>
+                    @{ x += item.price * item.quantity;}
+                    @Html.DisplayFor(modelItem => x)
+                </td>
+                @{ y = item.order;}
+            </tr>
+    }
+    </tbody>
+</table>
+

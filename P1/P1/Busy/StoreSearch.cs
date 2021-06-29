@@ -175,5 +175,32 @@ namespace Busy
             context.SaveChanges();
             return;
         }
+
+        public ArrayList getInventorybyID(int id)
+        {
+            ArrayList arr = new ArrayList();
+
+            var choices = context.StoreInventories.Where(x => x.StoreId == id).ToList();
+
+            if (!choices.Any())
+            {
+                return arr;
+            }
+            foreach (var i in choices)
+            {
+                ModelsDefault.Inventory inv = new ModelsDefault.Inventory();
+                inv.store = i.StoreId;
+                inv.id = i.ItemId;
+
+                inv.name = context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemName).FirstOrDefault();
+                inv.quantity = i.Quantity;
+                inv.price = (double)context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemPrice).FirstOrDefault();
+                inv.descr = context.Items.Where(x => x.ItemId == i.ItemId).Select(x => x.ItemDescription).FirstOrDefault();
+
+                arr.Add(inv);
+            }
+
+            return arr;
+        }
     }
 }

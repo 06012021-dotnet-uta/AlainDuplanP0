@@ -22,6 +22,8 @@ namespace ModelsDefault
         private ArrayList products = new ArrayList();
 
         public int auth { get; set; }
+        public int itemIDHolder { get; set; }
+        public int amountHolder { get; set; }
 
         //public coll {get; set;}
 

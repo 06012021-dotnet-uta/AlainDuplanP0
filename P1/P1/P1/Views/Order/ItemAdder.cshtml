@@ -1,19 +1,19 @@
 ﻿@model ModelsDefault.Order
 
 @{
-    ViewData["Title"] = "createOrder";
+    ViewData["Title"] = "ItemAdder";
 }
 
-<h1>createOrder</h1>
+<h1>ItemAdder</h1>
 
 <h4>Order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="createOrder">
+        <form asp-action="ItemAdder">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="store" class="control-label">Enter Store ID to Shop From</label>
+            <div hidden class="form-group">
+                <label asp-for="store" class="control-label"></label>
                 <input asp-for="store" class="form-control" />
                 <span asp-validation-for="store" class="text-danger"></span>
             </div>
@@ -43,6 +43,16 @@
                 <span asp-validation-for="auth" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="itemIDHolder" class="control-label">Enter Item ID:</label>
+                <input asp-for="itemIDHolder" class="form-control" />
+                <span asp-validation-for="itemIDHolder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amountHolder" class="control-label">Enter Quantity</label>
+                <input asp-for="amountHolder" class="form-control" />
+                <span asp-validation-for="amountHolder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -51,5 +61,5 @@
 
 <div>
     <button class="btn-light"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></button>
-
 </div>
+

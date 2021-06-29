@@ -85,8 +85,7 @@ namespace P1.Controllers
             return View("OopsLogin");
         }
         // POST: LoginController/UserLogin
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult LoginUser(ModelsDefault.User user)
         {
             //check that the model binding worked.
