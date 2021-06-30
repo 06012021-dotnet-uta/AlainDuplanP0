@@ -8,7 +8,10 @@ using ShopperContext;
 
 namespace Busy
 {
-    public class StoreSearch
+       /// <summary>
+       /// used to handle store operations
+       /// </summary>
+    public class StoreSearch : IStoreSearch
     {
         ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
         ModelsDefault.User us;
@@ -20,7 +23,11 @@ namespace Busy
         }
 
         
-
+            /// <summary>
+            /// Returns a list of store based on a query
+            /// </summary>
+            /// <param name="user">user object which contains query</param>
+            /// <returns>list of stores</returns>
             public ArrayList listsStores (ModelsDefault.User user)
         {
             ArrayList arr = new ArrayList();
@@ -57,7 +64,11 @@ namespace Busy
 
             return arr;
         }
-
+        /// <summary>
+        /// Pulls all orders from a store
+        /// </summary>
+        /// <param name="cust">Store object</param>
+        /// <returns>List of order objects</returns>
         public ArrayList getOrders(ModelsDefault.Store cust)
         {
             ArrayList arr = new ArrayList();
@@ -91,7 +102,12 @@ namespace Busy
             }
             return arr;
         }
-
+        /// <summary>
+        /// Builds a new store and adds it to the database based on name and location
+        /// </summary>
+        /// <param name="name">Name of store</param>
+        /// <param name="location">store location</param>
+        /// <returns></returns>
         public ModelsDefault.Store getStore(string name, string location){
 
             ShopperContext.Store store = new ShopperContext.Store();
@@ -119,6 +135,12 @@ namespace Busy
 
 
         }
+
+        /// <summary>
+        /// Builds a store based on id, hides sensitive info
+        /// </summary>
+        /// <param name="id">Store id</param>
+        /// <returns>User friendly store object</returns>
         public ModelsDefault.Store getStore2(int id)
         {
 
@@ -140,6 +162,11 @@ namespace Busy
 
 
         }
+        /// <summary>
+        /// Returns inventory of a store
+        /// </summary>
+        /// <param name="store">Store object</param>
+        /// <returns>List of inventory items</returns>
         public ArrayList getInventory(ModelsDefault.Store store)
         {
             ArrayList arr = new ArrayList();
@@ -166,6 +193,11 @@ namespace Busy
 
             return arr;
         }
+        /// <summary>
+        /// Restocks inventory
+        /// </summary>
+        /// <param name="add">Ammount of items to add</param>
+        /// <param name="inv">Inventory item to restock</param>
         public void addItem(int add, ModelsDefault.Inventory inv)
         {
             ShopperContext.StoreInventory temp = context.StoreInventories.Where(x => x.StoreId == inv.store && x.ItemId == inv.id).FirstOrDefault();
@@ -175,7 +207,11 @@ namespace Busy
             context.SaveChanges();
             return;
         }
-
+        /// <summary>
+        /// Gets store inventory via use of store id
+        /// </summary>
+        /// <param name="id">store id</param>
+        /// <returns>list of inventory objects</returns>
         public ArrayList getInventorybyID(int id)
         {
             ArrayList arr = new ArrayList();

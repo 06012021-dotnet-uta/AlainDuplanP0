@@ -7,8 +7,16 @@ using ShopperContext;
 
 namespace Busy
 {
-    public class NewOrder
+    /// <summary>
+    /// Responsiblle for creating new orders
+    /// </summary>
+    public class NewOrder : INewOrder
     {
+        /// <summary>
+        /// Responsible for checking if store id was valid
+        /// </summary>
+        /// <param name="id">Store ID</param>
+        /// <returns>Whether store ID is valid</returns>
         public bool checkStore(int id)
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
@@ -17,7 +25,11 @@ namespace Busy
 
             return check == null;
         }
-
+        /// <summary>
+        /// Builds a new order object
+        /// </summary>
+        /// <param name="order">Order object with a customer id and store id field filled in</param>
+        /// <returns>Returns updated order object</returns>
         public ModelsDefault.Order startOrder(ModelsDefault.Order order)
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
@@ -35,7 +47,12 @@ namespace Busy
             return order;
             
         }
-
+        /// <summary>
+        /// Check if item exists in the store
+        /// </summary>
+        /// <param name="id">store id</param>
+        /// <param name="item">item id</param>
+        /// <returns>whether or not item exist in the store</returns>
         public bool checkItem(int id, int item)
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
@@ -44,7 +61,13 @@ namespace Busy
 
             return check == null;
         }
-
+        /// <summary>
+        /// checks if store has sufficient quanitiy of an item
+        /// </summary>
+        /// <param name="id">store id</param>
+        /// <param name="item">item id</param>
+        /// <param name="quant">quanitity asked</param>
+        /// <returns>If store can payout</returns>
         public bool checkQuantity(int id, int item, int quant)
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
@@ -54,6 +77,12 @@ namespace Busy
             return check.Quantity < quant;
         }
 
+        /// <summary>
+        /// Check if duplicate items exist in an order
+        /// </summary>
+        /// <param name="id">order id</param>
+        /// <param name="item">store id</param>
+        /// <returns>if item doesnt exist, returns true</returns>
         public bool checkDuplicates(int id, int item)
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
@@ -63,6 +92,10 @@ namespace Busy
             return check == null;
         }
 
+        /// <summary>
+        /// Build order based of newest order in database(the order we are working on)
+        /// </summary>
+        /// <returns>New fully built order</returns>
         public ModelsDefault.Order buildOrder()
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
@@ -89,7 +122,13 @@ namespace Busy
 
             return order;
         }
-
+        /// <summary>
+        /// Updates data base with order info
+        /// </summary>
+        /// <param name="id">order id</param>
+        /// <param name="item">item id</param>
+        /// <param name="quant">quantity taken</param>
+        /// <param name="store">store id</param>
         public void updateOrder(int id, int item, int quant, int store)
         {
             ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();

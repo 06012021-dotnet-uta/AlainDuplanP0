@@ -37,6 +37,7 @@ namespace ModelsDefault
             findF = "";
             findL = "";
             findStore = "";
+            
 
         }
 

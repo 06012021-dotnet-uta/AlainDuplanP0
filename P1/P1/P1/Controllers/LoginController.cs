@@ -9,22 +9,27 @@ using ModelsDefault;
 
 namespace P1.Controllers
 {
+    /// <summary>
+    /// Handles loggging in, sign up and home page
+    /// </summary>
     public class LoginController : Controller
     {
         private readonly SignUp  signUp = new SignUp();
 
+        /// <summary>
+        /// Main Login In Sceen
+        /// </summary>
+        /// <returns></returns>
         // GET: LoginController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: LoginController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+       /// <summary>
+       /// Creates a new user
+       /// </summary>
+       /// <returns></returns>
         // GET: LoginController/Create
         public ActionResult Create()
         {
@@ -72,20 +77,26 @@ namespace P1.Controllers
                 return View("ErrorLogin");
             }
         }
-
+        /// <summary>
+        /// Brings login page
+        /// </summary>
+        /// <returns></returns>
         // GET: LoginController/Login
         public ActionResult Login()
         {
             return View("LoginUser");
         }
-
+        /// <summary>
+        /// Error on loggin in
+        /// </summary>
+        /// <returns></returns>
         // GET: LoginController/OopsLogin
         public ActionResult OopsLogin()
         {
             return View("OopsLogin");
         }
-        // POST: LoginController/UserLogin
         
+        // Get: LoginController/LoginUser        
         public ActionResult LoginUser(ModelsDefault.User user)
         {
             //check that the model binding worked.

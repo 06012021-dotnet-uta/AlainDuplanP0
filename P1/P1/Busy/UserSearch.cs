@@ -8,10 +8,17 @@ using ShopperContext;
 
 namespace Busy
 {
-    public class UserSearch
+    /// <summary>
+    /// handles searching for user, limited to only authorized users
+    /// </summary>
+    public class UserSearch : IUserSearch
     {
         ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
-
+        /// <summary>
+        /// Searches for users via a query
+        /// </summary>
+        /// <param name="user">user object containing query fields</param>
+        /// <returns>List of user objects</returns>
         public ArrayList listUsers(ModelsDefault.User user)
         {
             ArrayList arr = new ArrayList();

@@ -7,9 +7,19 @@ using ShopperContext;
 
 namespace Busy
 {
-    public class SignUp
+    /// <summary>
+    /// Handles user login and signing up
+    /// </summary>
+    public class SignUp : ISignUP
     {
        ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
+        /// <summary>
+        /// Creates a new user
+        /// </summary>
+        /// <param name="fname">First name</param>
+        /// <param name="lname">Last Name</param>
+        /// <param name="top">Recomended store</param>
+        /// <returns>True if user was succeffuly created</returns>
         public async Task<bool> registerUser(string fname, string lname, int top)
         {
             Customer cust = new Customer();
@@ -33,17 +43,19 @@ namespace Busy
            
             return true;
         }
-
-        public int getTop()
-        {
-            return context.Stores.Select(x => x.StoreId).Max();
-        }
-
+        /// <summary>
+        /// Gets id of newest created user
+        /// </summary>
+        /// <returns></returns>
         public int getID()
         {
             return context.Customers.Select(x => x.CustomerId).Max();
         }
-
+        /// <summary>
+        /// Checks if user id is false
+        /// </summary>
+        /// <param name="id">User id</param>
+        /// <returns>true if user id exists</returns>
         public bool checkID(int id)
         {
             Customer cust = context.Customers.Where(x => x.CustomerId == id).FirstOrDefault();
@@ -62,7 +74,11 @@ namespace Busy
             }
             return true;
         }
-
+        /// <summary>
+        /// Fills in fields of a user item
+        /// </summary>
+        /// <param name="user">user item that contains a user id</param>
+        /// <returns>fully built user</returns>
         public ModelsDefault.User getUser(ModelsDefault.User user)
         {
             Customer cust = context.Customers.Where(x => x.CustomerId == user.id).FirstOrDefault();

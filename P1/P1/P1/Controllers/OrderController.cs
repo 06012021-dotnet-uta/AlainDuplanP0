@@ -9,11 +9,14 @@ using ModelsDefault;
 
 namespace P1.Controllers
 {
+    /// <summary>
+    /// Handles order functions
+    /// </summary>
     public class OrderController : Controller
     {
         
         // GET: OrderController/Search
-        public ActionResult Search(ModelsDefault.User user)
+        public ActionResult Search(ModelsDefault.User user)// creates new orders
         {
             //StoreSearch store = new StoreSearch();
 
@@ -30,10 +33,10 @@ namespace P1.Controllers
             return View("createOrder", order);
         }
 
-        // GET: OrderController/Details/5
+        // Post: OrderController/createOrder
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult createOrder(ModelsDefault.Order order)
+        public ActionResult createOrder(ModelsDefault.Order order)//prompts user for store
         {
             NewOrder newOrder = new NewOrder();
 
@@ -48,21 +51,24 @@ namespace P1.Controllers
 
         }
 
-        public ActionResult ViewItems(ModelsDefault.Order order)
+        // GET: OrderController/ViewItems
+        public ActionResult ViewItems(ModelsDefault.Order order)//view items of a store
         {
             StoreSearch sto = new StoreSearch();
 
             return View("viewItems", sto.getInventorybyID(order.store).Cast<ModelsDefault.Inventory>().GetEnumerator());
         }
 
-        public ActionResult AddItems(ModelsDefault.Order order)
+        // GET: OrderController/AddItems
+        public ActionResult AddItems(ModelsDefault.Order order)// add items to an order
         {
             order.itemIDHolder = 0;
             order.amountHolder = 0;
             return View("ItemAdder", order);
         }
 
-        public ActionResult Home(ModelsDefault.Order order)
+        // GET: OrderController/Home
+        public ActionResult Home(ModelsDefault.Order order)//redirects to home page
         {
             ModelsDefault.User user = new ModelsDefault.User();
             user.id = order.custId;
@@ -70,9 +76,10 @@ namespace P1.Controllers
             return RedirectToAction("LoginUser", "Login", user);
         }
 
+        // Post: OrderController/ItemAdder
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ItemAdder(ModelsDefault.Order order)
+        public ActionResult ItemAdder(ModelsDefault.Order order)//does verious checks before updating order and database
         {
             NewOrder newOrder = new NewOrder();
             if(newOrder.checkItem(order.store, order.itemIDHolder))
@@ -95,8 +102,8 @@ namespace P1.Controllers
             return View("OrderDetails", uo.getOrderItems(order).Cast<ModelsDefault.Inventory>().GetEnumerator());
         }
 
-        
-        public ActionResult Build()
+        // GET: OrderController/Build
+        public ActionResult Build()//rebuild order object
         {
             
             NewOrder newOrder = new NewOrder();
@@ -109,61 +116,6 @@ namespace P1.Controllers
             return View();
         }
 
-        // POST: OrderController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: OrderController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: OrderController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: OrderController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: OrderController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

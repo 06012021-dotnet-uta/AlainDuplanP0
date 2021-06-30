@@ -8,6 +8,9 @@ using Busy;
 
 namespace P1.Models
 {
+    /// <summary>
+    /// Helper Class for building new users
+    /// </summary>
     public class User
     {
         

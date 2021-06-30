@@ -8,7 +8,10 @@ using ShopperContext;
 
 namespace Busy
 {
-    public class UserOrders
+    /// <summary>
+    /// Handles user orders
+    /// </summary>
+    public class UserOrders : IUserOrders
     {
         ShopperContext.ShopperContext context = new ShopperContext.ShopperContext();
 
@@ -19,7 +22,11 @@ namespace Busy
         {
             this.user = user;
         }
-
+        /// <summary>
+        /// returns a list of previous orders under a user
+        /// </summary>
+        /// <param name="cust">User objects</param>
+        /// <returns>list of order objects</returns>
         public ArrayList getOrders(ModelsDefault.User cust)
         {
             ArrayList arr = new ArrayList();
@@ -52,6 +59,11 @@ namespace Busy
             }
             return arr;
         }
+        /// <summary>
+        /// Return list of items in order
+        /// </summary>
+        /// <param name="order">order object</param>
+        /// <returns>list of inventory items</returns>
         public ArrayList getOrderItems(ModelsDefault.Order order)
         {
             ArrayList arr = new ArrayList();

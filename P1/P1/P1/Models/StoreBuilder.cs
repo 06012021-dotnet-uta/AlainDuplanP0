@@ -8,8 +8,12 @@ using Busy;
 
 namespace P1.Models
 {
+    /// <summary>
+    /// helper class for building new stores
+    /// </summary>
     public class StoreBuilder
     {
+
         [Required(ErrorMessage = "You need a name")]
         [MaxLength(30, ErrorMessage = "Name is too long")]
         public string name { get; set; }
