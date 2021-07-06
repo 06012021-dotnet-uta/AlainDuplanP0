@@ -26,7 +26,8 @@ CREATE TABLE Customer(
     CustomerId INT PRIMARY KEY NOT NULL IDENTITY(1000, 1),
     CustomerFName VARCHAR(50) DEFAULT 'Unamed',
     CustomerLName VARCHAR(50) DEFAULT 'Unamed',
-    CustomerTop INT NULL FOREIGN KEY REFERENCES Item
+    CustomerTop INT NULL FOREIGN KEY REFERENCES Store,
+    Auth INT DEFAULT 0
 );
 
 CREATE TABLE Orders(
