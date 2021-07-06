@@ -1,4 +1,5 @@
 console.log("hello ME world");
+let doc = document.getElementByClassName("class1")[0];
 
 fetch('http://api.icndb.com/jokes/random')
     .then(res => {        
