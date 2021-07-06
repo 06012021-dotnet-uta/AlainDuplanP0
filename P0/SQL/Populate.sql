@@ -15,6 +15,9 @@ VALUES('Max', 'Mind');
 INSERT INTO Customer(CustomerFName, CustomerLName)
 VALUES('John', 'Smith');
 
+INSERT INTO Customer(CustomerFName, CustomerLName, Auth)
+VALUES('Gild', 'Tesaro', 3);
+
 ---INSERT INTO Customer(CustomerFName, CustomerLName, CustomerTop)
 --VALUES('Jack', 'Doe', 1003);
 
