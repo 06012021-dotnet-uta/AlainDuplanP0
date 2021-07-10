@@ -1,0 +1,46 @@
+
+---CREATE DATABASE Shopper;
+use shopper
+CREATE TABLE Item(
+    ItemId INT PRIMARY KEY NOT NULL IDENTITY(1000, 1),
+    ItemName VARCHAR(30) NOT NULL,
+    ItemDescription VARCHAR(250)  DEFAULT 'No Item Data Available',
+    ItemPrice DECIMAL(6,2) NOT NULL
+);
+
+
+CREATE TABLE Store(
+    StoreId INT PRIMARY KEY NOT NULL IDENTITY(1000, 1),
+    StoreName VARCHAR(50) NOT NULL,
+    StoreLocation VARCHAR(100) DEFAULT 'No Location Data Available',
+);
+
+CREATE TABLE StoreInventory(
+    ItemId INT NOT NULL FOREIGN KEY REFERENCES Item,
+    StoreId INT NOT NULL FOREIGN KEY REFERENCES Store,
+    Quantity INT NOT NULL,
+    PRIMARY KEY (ItemId, StoreId)
+);
+
+CREATE TABLE Customer(
+    CustomerId INT PRIMARY KEY NOT NULL IDENTITY(1000, 1),
+    CustomerFName VARCHAR(50) DEFAULT 'Unamed',
+    CustomerLName VARCHAR(50) DEFAULT 'Unamed',
+    CustomerTop INT FOREIGN KEY REFERENCES Store DEFAULT 1000,
+    Auth INT DEFAULT 0
+);
+
+CREATE TABLE Orders(
+    OrdersId INT PRIMARY KEY NOT NULL IDENTITY(1000, 1),
+    StoreId INT NOT NULL FOREIGN KEY REFERENCES Store,
+    CustomerId INT NOT NULL FOREIGN KEY REFERENCES Customer,
+    OrdersDateTime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE OrderInventory(
+    ItemId INT NOT NULL FOREIGN KEY REFERENCES Item,
+    OrdersId INT NOT NULL FOREIGN KEY REFERENCES Orders,
+    Quantity INT NOT NULL,
+    PRIMARY KEY (ItemId, OrdersId)
+);
+
