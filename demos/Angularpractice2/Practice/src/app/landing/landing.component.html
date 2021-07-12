@@ -1,0 +1,67 @@
+<p>player-landingpage works!</p>
+<div class="div1">
+    {{pageTitle}}
+</div>
+<br>
+<!-- you can bind a keyboard or mouse event to a function in the .ts class -->
+<input (keyup)="Input1Func($event)" type="text" name="input1" id="input1">
+<h3>{{input1}}</h3>
+
+<!-- You can create variables just insid eth ehtml for passing values, etc -->
+<input type="text" #input11 (keyup)="input1 = input11.value">
+
+<div [class.div1]="clicked" (mouseover)="Clickt()">
+    <h3>
+        Have I been clicked?
+    </h3>
+</div>
+
+<textarea (mouseenter)="textAreaFunc($event)" cols="30" rows="10">ldjsjds</textarea>
+{{sx}},{{sy}}
+
+<!-- <input [(ngModel)]="input22" placeholder="{{input2}}">
+{{input22}} -->
+<!-- {{input2}}
+<input [(ngModel)]="input2" type="text" placeholder="{{input22}}"> -->
+<br>
+<!-- two-way binding is syntax that allows changes to one variable to be 
+reflected in all bound locations at the same time.
+the two-way binding overrides the placeholder. -->
+<input [(ngModel)]="something3" (click)=DispayIfChanged(something3) type="text" value="{{something}}">
+<br>
+{{something3}}
+<!-- {{something}} -->
+<br>
+<input [(ngModel)]="something3" type="text" placeholder="{{something3}}">
+
+<div *ngIf="something4 != null">
+    <h4>{{something4}}</h4>
+</div>
+
+<!-- you can format input, too -->
+<ol>
+    <li *ngFor="let p of people">
+        {{p.name1 | lowercase}} is {{p.age | number:'4.1-5'}} and live in {{p.country}}
+    </li>
+</ol>
+
+Put the max age for the filter: <input type="text" #maxAge (keyup)=MaxAgeFunc(maxAge.value) autofocus>
+
+<ul *ngFor="let p of people">
+    <li *ngIf="p.age < maxAge1">
+        {{p.name1}}, {{p.age}}
+    </li>
+</ul>
+
+
+<!-- get an input to be transferred to the child component -->
+<br>
+<br>
+<h4>Put in a value to pass to the child</h4>
+<input type="text" #passToChild>
+<button (click)=PassToChildFunc(passToChild.value)>Submit the value to pass</button>
+
+nest the child component here 
+<app-child [passedFromParent]="passTochildVar" (passToParentEventEmitter)="GetEventEmitted($event)"></app-child>
+
+<h4>This is the value from the child component. => {{valuePassedFromChild | titlecase}}</h4>

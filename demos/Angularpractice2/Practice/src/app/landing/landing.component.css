@@ -1,0 +1,10 @@
+  
+.div1:hover{
+    color: blueviolet;
+    /* height: 50px;
+    width: 100; */
+}
+
+.div1{
+    background-color: blueviolet;
+}

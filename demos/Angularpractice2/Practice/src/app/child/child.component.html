@@ -1,0 +1,8 @@
+<p>child works!</p>
+Here is the value of the passedFromParent variable in the child => {{passedFromParent}}
+
+<br>
+<br>
+<h4>Put in a value to pass to the parent</h4>
+<input type="text" #passToParent>
+<button (click)=PassToParentFunc(passToParent.value)>Submit the value to pass to the parent</button>
