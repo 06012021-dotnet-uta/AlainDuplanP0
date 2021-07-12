@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 import { AppRoutungModule } from './app-routung.module';
 import { PlayerlistComponent } from './playerlist/playerlist.component';
+import { HomeComponent } from './home/home.component';
+import { PlayerdetailsComponent } from './playerdetails/playerdetails.component';
 //import { StringifyOptions } from 'querystring';
 
 @NgModule({
@@ -14,7 +16,9 @@ import { PlayerlistComponent } from './playerlist/playerlist.component';
     AppComponent,
     LandingComponent,
     ChildComponent,
-    PlayerlistComponent
+    PlayerlistComponent,
+    HomeComponent,
+    PlayerdetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,19 @@
 <p>playerlist works!</p>
+
+<h1> here is where the list goes</h1>
+
+<button (click)="SortByAgeFunc()">Sort by Age</button>
+<button (click)="SortByCountryFunc()">Sort by Country</button>
+<button (click)="SortByFnameFunc()">Sort by First Name</button>
+<button (click)="SortByPersonIdFunc()">Sort by Id</button>
+<div *ngIf="playerArr">
+    <ul>
+        <li *ngFor="let p of playerArr">
+            {{p.personid}} - {{p.fname}} - {{p.lname}} - {{p.myage}}
+            <button (click)="playerdetails(p.personid)">Details</button>
+        </li>
+    </ul>
+</div>
+
+<!--Nest component-->
+<app-playerdetails [player2]="chosen"></app-playerdetails>
