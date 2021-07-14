@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player';
+import { PlayerserviceService } from '../playerservice.service';
 
 @Component({
   selector: 'app-playerlist',
@@ -10,20 +11,17 @@ export class PlayerlistComponent implements OnInit {
 
   playerArr?: Player[];
   chosen?:Player;
-  constructor() { }
+  constructor(private playerservice:PlayerserviceService) { }
 
   ngOnInit(): void {
-    this.playerArr = [
-      { personid: 123, fname: 'BO', lname: 's5s', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 420 },
-      { personid: 143, fname: 'NO', lname: 'sss', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 4200 },
-      { personid: 163, fname: 'LO', lname: 'qqw', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 420 },
-      { personid: 153, fname: 'SO', lname: 'qs', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 4000 },
-      { personid: 173, fname: 'SO', lname: 'qww', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 2000 },
-      { personid: 183, fname: 'Ldp', lname: 'wwq', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 420800 },
-      { personid: 193, fname: 'PS', lname: 'qww', mycountry: 'Russia', street: '123 main', state: 'Texas', city: 'Alvarado', myage: 452000 },
+    this.playerservice.GetPlayerlist().subscribe(
+      x => this.playerArr = x,
+      y => console.log(y),
+      () => console.log('complete callback')
+    );
 
 
-    ]
+    
   }
 
   playerdetails(personid:number):void{
