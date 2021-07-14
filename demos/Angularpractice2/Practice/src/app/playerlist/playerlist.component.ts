@@ -11,10 +11,11 @@ export class PlayerlistComponent implements OnInit {
 
   playerArr?: Player[];
   chosen?:Player;
+  showAddplayer: boolean = false;
   constructor(private playerservice:PlayerserviceService) { }
 
   ngOnInit(): void {
-    this.playerservice.GetPlayerlist().subscribe(
+    this.playerservice.GetPlayerlist().subscribe( //first subscribe, second error, callback finally
       x => this.playerArr = x,
       y => console.log(y),
       () => console.log('complete callback')
@@ -42,6 +43,14 @@ export class PlayerlistComponent implements OnInit {
 
   SortByPersonIdFunc(): void {
     this.playerArr = this.playerArr?.sort((a, b) => (a.personid > b.personid) ? 1 : -1);
+  }
+
+  AddPlayerParent(event: Player): void {
+    //call the service function to add the player to the Db.
+    this.playerservice.AddPlayer(event).subscribe(
+      x => this.playerArr?.push(x),
+      y => console.log('there was a problem adding the player')
+    );
   }
 
 }

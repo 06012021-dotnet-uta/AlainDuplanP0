@@ -1,0 +1,24 @@
+<p>addplayer works!</p>
+
+<label for="fname">First Name:</label>
+<input type="text" [(ngModel)]="newPlayer.fname" name="fname" placeholder="first name">
+
+<label for="lname">Last Name:</label>
+<input type="text" [(ngModel)]="newPlayer.lname" name="lname" placeholder="last name">
+
+<label for="myCountry">Country:</label>
+<input type="text" [(ngModel)]="newPlayer.mycountry" name="myCountry" placeholder="country">
+
+<label for="street">Street:</label>
+<input type="text" [(ngModel)]="newPlayer.street" name="street" placeholder="street">
+
+<label for="state">State:</label>
+<input type="text" [(ngModel)]="newPlayer.state" name="state" placeholder="state">
+
+<label for="city">City:</label>
+<input type="text" [(ngModel)]="newPlayer.city" name="city" placeholder="city">
+
+<label for="myage">Your Age:</label>
+<input type="number" [(ngModel)]="newPlayer.myage" name="myage" placeholder="your age">
+<br><br>
+<button (click)="AddNewPlayer()">Submit this new player!</button>

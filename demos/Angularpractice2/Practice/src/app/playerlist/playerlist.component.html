@@ -17,3 +17,6 @@
 
 <!--Nest component-->
 <app-playerdetails [player2]="chosen"></app-playerdetails>
+
+<button (click)="showAddplayer = true">Add a New player</button>
+<app-addplayer *ngIf="showAddplayer" (playerevent)="AddPlayerParent($event)"></app-addplayer>
